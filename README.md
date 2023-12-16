@@ -22,10 +22,14 @@ Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a c
 
 ### Installation
 1. Clone the repository:
-> git clone https://github.com/SQU3AKERS/Sky-P2P.git
+```
+git clone https://github.com/SQU3AKERS/Sky-P2P.git
+```
 
-2. Install dependencies for both frontend and backend:
-> cd Sky-P2P/frontend && npm install && cd ../backend && npm install
+3. Install dependencies for both frontend and backend:
+```
+cd Sky-P2P/frontend && npm install && cd ../backend && npm install
+```
 
 3. Set up the MySQL database:
 + Create the database and tables using the SQL scripts provided.
@@ -33,7 +37,9 @@ Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a c
 
 ## Running the application
 1. Start both servers:
-> cd Sky-P2P
-> npm start
+```
+cd Sky-P2P
+npm start
+```
 
-2. Access the application at http://localhost:3000.
+3. Access the application at http://localhost:3000.
