@@ -44,4 +44,4 @@ cd Sky-P2P
 npm start
 ```
 
-3. Access the application at http://localhost:3000.
+2. Access the application at http://localhost:3000.
