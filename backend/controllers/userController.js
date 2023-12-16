@@ -16,7 +16,7 @@ const registerUser = async (req, res) => {
 
     // Prepare the SQL query
     const insertQuery = `
-      INSERT INTO Users (FirstName, LastName, PasswordHash, Email, DateOfBirth, Nationality, UserType, BlockchainAddress)
+      INSERT INTO users (FirstName, LastName, PasswordHash, Email, DateOfBirth, Nationality, UserType, BlockchainAddress)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
