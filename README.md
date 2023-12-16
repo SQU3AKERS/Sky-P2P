@@ -28,7 +28,7 @@ Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a c
 git clone https://github.com/SQU3AKERS/Sky-P2P.git
 ```
 
-3. Install dependencies for both frontend and backend:
+2. Install dependencies for both frontend and backend:
 ```
 cd Sky-P2P/frontend && npm install && cd ../backend && npm install
 ```
