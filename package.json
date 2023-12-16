@@ -1,0 +1,27 @@
+{
+  "name": "sky-p2p",
+  "version": "1.0.0",
+  "description": "A more structured P2P FYP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SQU3AKERS/Sky-P2P.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SQU3AKERS/Sky-P2P/issues"
+  },
+  "homepage": "https://github.com/SQU3AKERS/Sky-P2P#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && node server.js",
+    "client": "cd front && npm start"
+  }  
+}
