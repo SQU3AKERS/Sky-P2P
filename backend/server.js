@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json()); // Enable JSON body parsing
+app.use('/api/users', userRoutes);
 
 // Define a POST route for registration
 app.post('/register', (req, res) => {
