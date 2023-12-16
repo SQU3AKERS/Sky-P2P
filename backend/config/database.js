@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 // Create a connection to the database
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
+  host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: '12345678',
   database: 'sky-p2p-db'
 });
 
