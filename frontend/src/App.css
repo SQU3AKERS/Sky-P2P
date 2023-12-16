@@ -1,0 +1,168 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  margin: 0 5%;
+}
+
+.login-component {
+  width: 30%;
+  background-color: purple;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-component form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-component input {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.login-component button {
+  background-color: white;
+  color: purple;
+  padding: 10px;
+  border: none;
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+
+.register-link a {
+  color: white;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.register-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-box {
+  background-color: purple;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-box h2 {
+  text-align: center;
+}
+
+.register-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-box label {
+  margin-top: 10px;
+}
+
+.register-box input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.register-box button {
+  background-color: white;
+  color: purple;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.register-box select {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: white; /* or any color you prefer */
+  color: #333; /* text color for the options */
+}
+
+/* Consistent styling for both inputs and selects */
+.register-box input, .register-box select {
+  width: 100%; /* Full width */
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* light grey border */
+  border-radius: 5px;
+  box-sizing: border-box; /* To include padding and border in the element's total width and height */
+}
+
+/* Style focus state for inputs and selects for better UX */
+.register-box input:focus, .register-box select:focus {
+  outline: none;
+  border-color: purple; /* or any color you prefer */
+  box-shadow: 0 0 5px rgba(128, 0, 128, 0.5); /* Optional: adds a glow effect on focus */
+}
+
+header {
+  background-color: purple;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+footer {
+  background-color: #f0f0f0;
+  color: black;
+  padding: 1em;
+  text-align: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
