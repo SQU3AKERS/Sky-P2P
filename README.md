@@ -17,8 +17,10 @@ Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a c
 
 ## Getting Started
 ### Prerequisites
-+ Node.js
-+ MySQL
++ [Node.js](https://nodejs.org/en)
++ [MySQL](https://dev.mysql.com/downloads/mysql/)
++ [Truffle](https://npmjs.com/package/truffle)
++ [Ganache](https://trufflesuite.com/ganache/)
 
 ### Installation
 1. Clone the repository:
