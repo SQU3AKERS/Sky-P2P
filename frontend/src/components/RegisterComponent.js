@@ -1,25 +1,64 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 
 const RegisterComponent = () => {
+  const [formData, setFormData] = useState({
+    userType: '',
+    firstName: '',
+    lastName: '',
+    dateOfBirth: '',
+    nationality: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Add validation and axios POST request here
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword || !formData.userType || !formData.dateOfBirth || !formData.nationality) {
+      alert('Please fill in all fields');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      alert('Email address is invalid');
+      return;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    try {
+      const response = await axios.post('http://localhost:3001/api/users/register', formData);
+      alert('Registration successful');
+    } catch (error) {
+      alert('Registration failed');
+    }
+  };
+
   return (
     <div className="register-component">
       <div className="register-box">
         <h2>Register</h2>
         <form>
           <label htmlFor="user-type">Register as...</label>
-          <select id="user-type">
+          <select id="userType">
             <option value="Lender">Lender</option>
             <option value="Borrower">Borrower</option>
           </select>
           
           <label htmlFor="first-name">First Name</label>
-          <input id="first-name" type="text" placeholder="First Name" />
+          <input id="firstName" type="text" placeholder="First Name" />
           
           <label htmlFor="last-name">Last Name</label>
-          <input id="last-name" type="text" placeholder="Last Name" />
+          <input id="lastName" type="text" placeholder="Last Name" />
           
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="date-of-birth" type="date" placeholder="Date of Birth" />
+          <input id="dateOfBirth" type="date" placeholder="Date of Birth" />
         
           <label htmlFor="nationality">Nationality</label>
           {/*-danrovito/countrydropdown.html*/}
@@ -277,7 +316,7 @@ const RegisterComponent = () => {
           <input id="password" type="password" placeholder="Password" />
           
           <label htmlFor="confirm-password">Confirm Password</label>
-          <input id="confirm-password" type="password" placeholder="Confirm Password" />
+          <input id="confirmPassword" type="password" placeholder="Confirm Password" />
           
           <button type="submit">Register</button>
         </form>
