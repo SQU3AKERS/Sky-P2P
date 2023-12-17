@@ -8,20 +8,17 @@ const registerUser = async (req, res) => {
   const { firstName, lastName, email, password, dateOfBirth, nationality, userType } = req.body;
 
   try {
-    // Generate a new blockchain account and store the private key
-    const blockchainAddress = await createAccountAndStorePrivateKey();
-
     // Hash the password
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     // Prepare the SQL query
     const insertQuery = `
-      INSERT INTO users (FirstName, LastName, PasswordHash, Email, DateOfBirth, Nationality, UserType, BlockchainAddress)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO users (FirstName, LastName, PasswordHash, Email, DateOfBirth, Nationality, UserType)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
     // Execute the SQL query
-    database.query(insertQuery, [firstName, lastName, passwordHash, email, dateOfBirth, nationality, userType, blockchainAddress], (error, results) => {
+    database.query(insertQuery, [firstName, lastName, passwordHash, email, dateOfBirth, nationality, userType], (error, results) => {
       if (error) {
         // Handle SQL error
         console.log("SQL error", error);
