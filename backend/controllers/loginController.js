@@ -1,33 +1,30 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel'); // Adjust the path as needed.
+const bcrypt = require('bcryptjs');
+const connection = require('../config/database');
 
-// Function to handle user login
-const loginUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
+const handleLogin = async (req, res) => {
+  const { email, password } = req.body;
+  console.log('Login request received for email:', email);
 
-    if (!user) {
-      return res.status(401).json({ message: 'Login failed, user not found.' });
+  connection.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+    if (err) {
+      console.log('Database error:', err);
+      return res.status(500).send('Internal server error');
     }
 
-    const match = await bcrypt.compare(password, user.PasswordHash);
-    if (!match) {
-      return res.status(401).json({ message: 'Login failed, incorrect password.' });
+    if (results.length === 0) {
+      return res.status(401).send('User does not exist');
     }
 
-    // Replace 'your_jwt_secret' with your actual JWT secret key
-    const token = jwt.sign({ id: user.UserID }, 'your_jwt_secret', { expiresIn: '1h' });
+    const user = results[0];
+    const isPasswordValid = await bcrypt.compare(password, user.PasswordHash);
+    if (!isPasswordValid) {
+      return res.status(401).send('Password is incorrect');
+    }
 
-    res.json({ 
-      message: 'Login successful', 
-      userType: user.UserType, 
-      token 
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'An error occurred during login.' });
-  }
+    const token = jwt.sign({ id: user.UserID }, process.env.JWT_SECRET, { expiresIn: 86400 });
+    res.send({ user: { id: user.UserID, email: user.Email, userType: user.UserType }, token });
+  });
 };
 
-module.exports = { loginUser };
+module.exports = { handleLogin };

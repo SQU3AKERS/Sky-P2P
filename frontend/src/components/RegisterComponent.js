@@ -36,12 +36,6 @@ const RegisterComponent = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:3001/api/users/register', formData);
-      alert('Registration successful');
-    } catch (error) {
-      alert('Registration failed');
-    }
-    try {
       await axios.post('http://localhost:3001/api/users/register', formData);
       alert('Registration successful');
       navigate('/');

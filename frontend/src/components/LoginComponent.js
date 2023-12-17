@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginComponent = () => {
@@ -15,24 +16,28 @@ const LoginComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Simple front-end validation
-    if (!email) {
-      alert('Please enter your email.');
+    console.log('Login attempt with:', { email, password });
+
+    if (!email || !password) {
+      alert('Both email and password are required');
       return;
     }
-    if (!password) {
-      alert('Please enter your password.');
-      return;
+
+    try {
+      const response = await axios.post('http://localhost:3001/api/login', { email, password });
+      const userType = response.data.userType;
+      console.log('User type:', userType);
+      if (userType === 'borrower') {
+        navigate('/borrower-mainpage');
+      } else if (userType === 'lender') {
+        navigate('/lender-mainpage');
+      } else {
+        alert('Invalid user type');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed - Unknown');
     }
-    // Regex pattern for basic email validation
-    const emailPattern = /\S+@\S+\.\S+/;
-    if (!emailPattern.test(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    const userType = 'borrower';
-    navigate(userType === 'borrower' ? '/borrower-mainpage' : '/lender-mainpage');
   };
 
   return (
