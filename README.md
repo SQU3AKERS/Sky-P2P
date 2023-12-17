@@ -1,6 +1,6 @@
 # Sky-P2P Lending Platform
 ## Introduction
-Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a credit scoring system on a blockchain network. This platform aims to revolutionize the way lending and borrowing are conducted by leveraging the security, transparency, and efficiency of blockchain technology.
+Sky-P2P is an innovative Peer-to-Peer (P2P) lending platform that integrates a credit scoring system on a blockchain network. This platform aims to revolutionize the way lending and borrowing are conducted by leveraging the security, transparency, and efficiency of blockchain technology. This project is also developed for my final year project for my degree in information technology with a specialism in financial technology (FinTech). Do not use this project for any commercial purpose as the project is solely a prototype without much security considerations.
 
 ## Features
 + **User Registration and Authentication**: Users can register as either lenders or borrowers, providing essential information that is securely stored in the system.
