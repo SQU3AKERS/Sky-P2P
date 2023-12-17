@@ -44,25 +44,25 @@ const RegisterComponent = () => {
     <div className="register-component">
       <div className="register-box">
         <h2>Register</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="user-type">Register as...</label>
-          <select id="userType">
+          <select id="userType" value={formData.userType} onChange={handleInputChange}>
             <option value="Lender">Lender</option>
             <option value="Borrower">Borrower</option>
           </select>
           
           <label htmlFor="first-name">First Name</label>
-          <input id="firstName" type="text" placeholder="First Name" />
+          <input id="firstName" type="text" value={formData.firstName} onChange={handleInputChange} placeholder="First Name" />
           
           <label htmlFor="last-name">Last Name</label>
-          <input id="lastName" type="text" placeholder="Last Name" />
+          <input id="lastName" type="text" value={formData.lastName} onChange={handleInputChange} placeholder="Last Name" />
           
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="dateOfBirth" type="date" placeholder="Date of Birth" />
+          <input id="dateOfBirth" type="date" value={formData.dateOfBirth} onChange={handleInputChange} placeholder="Date of Birth" />
         
           <label htmlFor="nationality">Nationality</label>
           {/*-danrovito/countrydropdown.html*/}
-          <select id="nationality">
+          <select id="nationality" value={formData.nationality} onChange={handleInputChange}>
           <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -310,10 +310,10 @@ const RegisterComponent = () => {
           </select>
 
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" placeholder="Email" />
+          <input id="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="Email" />
           
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" placeholder="Password" />
+          <input id="password" type="password" value={formData.password} onChange={handleInputChange} placeholder="Password" />
           
           <label htmlFor="confirm-password">Confirm Password</label>
           <input id="confirmPassword" type="password" placeholder="Confirm Password" />
