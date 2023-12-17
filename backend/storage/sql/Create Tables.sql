@@ -7,7 +7,7 @@ CREATE TABLE Users (
     Email VARCHAR(255) NOT NULL UNIQUE,
     DateOfBirth DATE NOT NULL,
     Nationality VARCHAR(255) NOT NULL,
-    UserType ENUM('Lender', 'Borrower') NOT NULL,
+    UserType ENUM('Lender', 'Borrower') NOT NULL
 );
 
 -- BorrowerContract Table
