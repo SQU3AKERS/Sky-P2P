@@ -316,7 +316,7 @@ const RegisterComponent = () => {
           <input id="password" type="password" value={formData.password} onChange={handleInputChange} placeholder="Password" />
           
           <label htmlFor="confirm-password">Confirm Password</label>
-          <input id="confirmPassword" type="password" placeholder="Confirm Password" />
+          <input id="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleInputChange}  placeholder="Confirm Password" />
           
           <button type="submit">Register</button>
         </form>
