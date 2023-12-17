@@ -8,7 +8,6 @@ CREATE TABLE Users (
     DateOfBirth DATE NOT NULL,
     Nationality VARCHAR(255) NOT NULL,
     UserType ENUM('Lender', 'Borrower') NOT NULL,
-    BlockchainAddress VARCHAR(255) NOT NULL
 );
 
 -- BorrowerContract Table
@@ -48,3 +47,17 @@ CREATE TABLE Payments (
     FOREIGN KEY (ContractID) REFERENCES BorrowerContract(ContractID),
     FOREIGN KEY (PayerID) REFERENCES Users(UserID)
 );
+
+-- RewardsPoints Table
+CREATE TABLE RewardsPoints (
+    RewardsID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    Points INT NOT NULL,
+    EarnedDate DATE NOT NULL,
+    Description VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- Attributes for Blockchain Storage:
+-- Transactions: TransactionID, FromUserID, ToUserID, Amount, TransactionDate, Status.
+-- Credit Score: UserID, CreditScore, ScoreDate.
