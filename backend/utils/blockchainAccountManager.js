@@ -7,6 +7,10 @@ const web3 = new Web3('http://127.0.0.1:7545');
 const createAccountAndStorePrivateKey = async () => {
   const account = await web3.eth.accounts.create();
 
+  // Log the account details
+  console.log("Account created:", account.address);
+  console.log("Private key:", account.privateKey);
+
   const privateKeyPath = path.resolve(__dirname, '../storage/privatekey-users', `privatekey-${account.address}.txt`);
 
   fs.writeFileSync(privateKeyPath, account.privateKey);
