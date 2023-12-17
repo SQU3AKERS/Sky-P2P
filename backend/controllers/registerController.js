@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const database = require('../config/database');
-const { createAccountAndStorePrivateKey } = require('../utils/blockchainAccountManager');
 
 const saltRounds = 10;
 
