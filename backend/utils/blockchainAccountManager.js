@@ -1,8 +1,9 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
-const fs = require('fs');
-const path = require('path');
 
-const web3 = new Web3('http://127.0.0.1:7545');
+const mnemonic = 'taste six hunt long year undo destroy effort aspect miracle caution obey';
+const provider = new HDWalletProvider(mnemonic, 'http://127.0.0.1:7545');
+const web3 = new Web3(provider);
 
 const createAccountAndStorePrivateKey = async () => {
   const account = await web3.eth.accounts.create();
