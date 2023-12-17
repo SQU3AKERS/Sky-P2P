@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 
 const RegisterComponent = () => {
   const [formData, setFormData] = useState({
@@ -326,15 +326,16 @@ const RegisterComponent = () => {
           <label htmlFor="password">Password</label>
           <div className="password-input-container">
             <input id="password" type={showPassword ? "text" : "password"} value={formData.password} onChange={handleInputChange} placeholder="Password"/>
-            <button onClick={() => setShowPassword(!showPassword)} className="toggle-password-visibility" style={{ border: 'none', background: 'none' }}>
+            <button onClick={(e) => {e.preventDefault(); setShowPassword(!showPassword);}} className="toggle-password-visibility" style={{ border: 'none', background: 'none' }}>
               <img src={showPassword ? "https://cdn-icons-png.flaticon.com/128/709/709612.png" : "https://cdn-icons-png.flaticon.com/128/2767/2767146.png"} alt="Toggle Visibility" style={{ width: '15px', height: '15px' }}/>
             </button>
           </div>
 
           <label htmlFor="confirm-password">Confirm Password</label>
-          <input id="confirmPassword" type={showPassword ? "text" : "password"} value={formData.confirmPassword} onChange={handleInputChange} placeholder="Confirm Password"/>
+          <input id="confirmPassword" type={"password"} value={formData.confirmPassword} onChange={handleInputChange} placeholder="Confirm Password"/>
           
           <button type="submit">Register</button>
+          <p className="contactSupport-link">Have an issue with registration?<br/><Link to="">Contact Support Here</Link></p>
         </form>
       </div>
     </div>

@@ -59,6 +59,20 @@
   border: none;
 }
 
+.contactSupport-link {
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+
+.contactSupport-link a {
+  color: white;
+  text-decoration: none;
+}
+
+.contactSupport-link a:hover {
+  text-decoration: underline;
+}
+
 .register-link {
   margin-top: 15px;
   font-size: 0.8rem;
