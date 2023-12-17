@@ -9,9 +9,7 @@ const LoginComponent = () => {
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <button type="submit">Log In</button>
-        <p className="register-link">
-          Don't have an account? <Link to="/register">Register New Account</Link>
-        </p>
+        <p className="register-link">Don't have an account?<br/><Link to="/register">Register New Account Here</Link></p>
       </form>
     </div>
   );
