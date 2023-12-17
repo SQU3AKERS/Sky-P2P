@@ -1,16 +1,15 @@
 require('dotenv').config();
+const session = require('express-session');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const registerRoute = require('./routes/registerRoute');
-const loginRoute = require('./routes/loginRoute');
 
 const app = express();
 
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json()); // Enable JSON body parsing
 app.use('/api/users', registerRoute);
-app.use('/api/login', loginRoute);
 
 // Start the server on port 3001, avoid conflict port 3000 with React
 app.listen(3001, () => {

@@ -1,26 +1,24 @@
-import './App.css';
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './components/HomePage'; // This is a new component to be created
+import HomePage from './components/HomePage';
 import RegisterComponent from './components/RegisterComponent';
 import "slick-carousel/slick/slick-theme.css";
-import LoginComponent from './components/LoginComponent';
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterComponent />} />
-          <Route path="/login" element={<LoginComponent />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterComponent />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
   );
 };
 
