@@ -144,6 +144,17 @@
   box-shadow: 0 0 5px rgba(128, 0, 128, 0.5); /* Optional: adds a glow effect on focus */
 }
 
+.password-input-container {
+  position: relative;
+}
+
+.toggle-password-visibility {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateX(30%) translateY(-82%);
+}
+
 header {
   background-color: purple;
   color: white;

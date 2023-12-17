@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const RegisterComponent = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const RegisterComponent = () => {
     password: '',
     confirmPassword: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -37,6 +40,14 @@ const RegisterComponent = () => {
       alert('Registration successful');
     } catch (error) {
       alert('Registration failed');
+    }
+    try {
+      await axios.post('http://localhost:3001/api/users/register', formData);
+      alert('Registration successful');
+      navigate('/');
+    } catch (error) {
+      alert('Registration failed');
+      setFormData({ ...formData, password: '', confirmPassword: '' });
     }
   };
 
@@ -313,10 +324,15 @@ const RegisterComponent = () => {
           <input id="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="Email" />
           
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" value={formData.password} onChange={handleInputChange} placeholder="Password" />
-          
+          <div className="password-input-container">
+            <input id="password" type={showPassword ? "text" : "password"} value={formData.password} onChange={handleInputChange} placeholder="Password"/>
+            <button onClick={() => setShowPassword(!showPassword)} className="toggle-password-visibility" style={{ border: 'none', background: 'none' }}>
+              <img src={showPassword ? "https://cdn-icons-png.flaticon.com/128/709/709612.png" : "https://cdn-icons-png.flaticon.com/128/2767/2767146.png"} alt="Toggle Visibility" style={{ width: '15px', height: '15px' }}/>
+            </button>
+          </div>
+
           <label htmlFor="confirm-password">Confirm Password</label>
-          <input id="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleInputChange}  placeholder="Confirm Password" />
+          <input id="confirmPassword" type={showPassword ? "text" : "password"} value={formData.confirmPassword} onChange={handleInputChange} placeholder="Confirm Password"/>
           
           <button type="submit">Register</button>
         </form>
