@@ -36,15 +36,17 @@ const LoginComponent = () => {
   };
 
   return (
-    <div className="login-component">
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <input type="email" id="email" value={email} onChange={handleInputChange} placeholder="Email" />
-        <input type="password" id="password" value={password} onChange={handleInputChange} placeholder="Password" />
-        <button type="submit">Log In</button>
-        {/* Other content */}
-        <p className="register-link">Don't have an account?<br/><Link to="/register">Register New Account Here</Link></p>
-      </form>
+    <div className="main-content">
+      <div className="login-component">
+        <form onSubmit={handleSubmit}>
+          <h2>Login</h2>
+          <input type="email" id="email" value={email} onChange={handleInputChange} placeholder="Email" />
+          <input type="password" id="password" value={password} onChange={handleInputChange} placeholder="Password" />
+          <button type="submit">Log In</button>
+          {/* Other content */}
+          <p className="register-link">Don't have an account?<br/><Link to="/register">Register New Account Here</Link></p>
+        </form>
+      </div>
     </div>
   );
 };

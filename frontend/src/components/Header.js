@@ -12,7 +12,7 @@ const Header = () => {
             <Link to="/support" style={{ color: 'white', textDecoration: 'none', marginLeft: '10px' }}>Support</Link>
           </div>
           <div>
-            <Link to="https://www.youtube.com/watch?v=xvFZjo5PgG0&t=0s" style={{ color: 'white', textDecoration: 'none' }}>Youtube</Link>
+            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
