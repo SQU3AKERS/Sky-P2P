@@ -1,5 +1,7 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
+const path = require('path');
+const fs = require('fs');
 
 const mnemonic = 'taste six hunt long year undo destroy effort aspect miracle caution obey';
 const provider = new HDWalletProvider(mnemonic, 'http://127.0.0.1:7545');
