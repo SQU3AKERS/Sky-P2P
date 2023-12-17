@@ -12,14 +12,15 @@ const Header = () => {
             <Link to="/support" style={{ color: 'white', textDecoration: 'none', marginLeft: '10px' }}>Support</Link>
           </div>
           <div>
-            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
+            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link> | 
+            <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}> Sign up</Link>
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
           <Link to="/">
             <img src="/logo192.png" alt="P2P Icon" style={{ height: '50px', marginRight: '10px' }} />
           </Link>
-          <h1>Sky's P2P Lending Platform</h1>
+          <h1><Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Sky's P2P Lending Platform</Link></h1>
         </div>
       </nav>
     </header>
