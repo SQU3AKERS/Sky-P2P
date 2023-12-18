@@ -31,9 +31,9 @@ const LoginComponent = () => {
       console.log('Login response:', response.data);
       // Assuming the response contains the user type
       if (response.data.userType === 'Borrower') {
-        navigate('/BorrowerMainpage');
+        navigate('/borrower/BorrowerMainpage');
       } else if (response.data.userType === 'Lender') {
-        navigate('/LenderMainpage');
+        navigate('/lender/LenderMainpage');
       } else {
         setError('Invalid user type');
       }
