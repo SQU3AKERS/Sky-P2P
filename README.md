@@ -40,7 +40,6 @@ npm install
 ## Running the application
 1. Start both servers:
 ```
-cd Sky-P2P
 npm start
 ```
 
