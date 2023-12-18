@@ -30,7 +30,7 @@ git clone https://github.com/SQU3AKERS/Sky-P2P.git
 
 2. Install dependencies for both frontend and backend:
 ```
-cd Sky-P2P/frontend && npm install && cd ../backend && npm install
+npm install
 ```
 
 3. Set up the MySQL database:
