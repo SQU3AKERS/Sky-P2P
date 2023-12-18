@@ -6,7 +6,10 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && node server.js",
-    "client": "cd frontend && npm start"
+    "client": "cd frontend && npm start",
+    "install": "concurrently \"npm run frontinstall\" \"npm run backinstall\"",
+    "backinstall": "cd backend && npm install",
+    "frontinstall": "cd frontend && npm install"
   },
   "repository": {
     "type": "git",
