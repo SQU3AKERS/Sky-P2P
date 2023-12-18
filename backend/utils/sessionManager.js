@@ -1,5 +1,3 @@
-// utils/sessionManager.js
-
 const { v4: uuidv4 } = require('uuid');
 let sessionStore = {};
 

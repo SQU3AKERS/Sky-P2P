@@ -2,10 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const registerRoute = require('./routes/registerRoute');
 const loginRoute = require('./routes/loginRoute');
+const registerRoute = require('./routes/registerRoute');
 
 const app = express();
+
+// Place this middleware before your routes
+app.options('*', cors());
 
 app.use(cors());
 app.use(bodyParser.json());

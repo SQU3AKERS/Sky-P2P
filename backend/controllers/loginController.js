@@ -1,35 +1,37 @@
-const mysql = require('mysql');
-const databaseConfig = require('../config/database');
-const { createSession } = require('../utils/sessionManager'); // Import the session manager
+const database = require('../config/database'); // Assuming this exports a pool or a single connection
+const bcrypt = require('bcrypt');
+const { createSession } = require('../utils/sessionManager');
 
 const loginController = {
   login: (req, res) => {
     const { email, password } = req.body;
-    const connection = mysql.createConnection(databaseConfig);
-
-    connection.connect(err => {
-      if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return res.status(500).send('Error connecting to database');
-      }
-
-      console.log('Connected to database.');
-    });
-
+    console.log('Attempting database connection...');
+    // Use the existing database connection or pool
     const query = 'SELECT * FROM Users WHERE Email = ?';
-    connection.query(query, [email], (err, results) => {
-      connection.end();
+    database.query(query, [email], async (err, results) => {
 
       if (err) {
-        console.error(err);
+        console.error('Error querying the database:', err);
         return res.status(500).send('Error querying the database');
       }
-
-      if (results.length > 0 && results[0].PasswordHash === password) {
-        const sessionId = createSession(results[0].UserID, results[0].UserType);
-        return res.json({ success: true, sessionId, userType: results[0].UserType });
+      console.log('Connected to database. Yay!');
+      if (results.length > 0) {
+        try {
+          const match = await bcrypt.compare(password, results[0].PasswordHash);
+          if (match) {
+          const sessionId = createSession(results[0].UserID, results[0].UserType);
+          res.json({ success: true, sessionId, userType: results[0].UserType });
+          } else {
+            console.log('Invalid credentials. Unable to create session.');
+            res.status(401).send('Invalid credentials. Unable to create session.');
+          }
+        } catch (bcryptError) {
+          console.error('Bcrypt error:', bcryptError);
+          res.status(500).send('Server error');
+        }
       } else {
-        return res.status(401).send('Invalid credentials');
+        console.log('Invalid credentials. It does not exist.');
+        res.status(401).send('Invalid credentials. It does not exist.');
       }
     });
   }

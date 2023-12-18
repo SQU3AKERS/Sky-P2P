@@ -26,7 +26,9 @@ const LoginComponent = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post('http://localhost:3001/api/login', formData);
+      console.log('Sending login request with:', formData);
+      const response = await axios.post('http://localhost:3001/api/login/loginUser', formData);
+      console.log('Login response:', response.data);
       // Assuming the response contains the user type
       if (response.data.userType === 'Borrower') {
         navigate('/BorrowerMainpage');
