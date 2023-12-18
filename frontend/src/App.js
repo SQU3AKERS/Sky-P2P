@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import RegisterComponent from './components/RegisterComponent';
+import LoginComponent from './components/LoginComponent';
 import "slick-carousel/slick/slick-theme.css";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<RegisterComponent />} />
+            <Route path="/login" element={<LoginComponent />} />
           </Routes>
           <Footer />
         </div>
