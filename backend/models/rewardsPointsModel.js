@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
+const User = require('./userModel');
 
 class RewardsPoints extends Model {}
 
@@ -14,4 +15,4 @@ RewardsPoints.init({
 // Define relationships
 RewardsPoints.belongsTo(User, { foreignKey: 'UserID' });
 
-module.exports = RewardsPoints;
+module.exports = { User, RewardsPoints };

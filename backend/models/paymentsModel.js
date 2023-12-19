@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
+const User = require('./userModel');
+const BorrowerContract = require('./borrowerContractModel');
 
 class Payments extends Model {}
 
@@ -17,4 +19,4 @@ Payments.init({
 Payments.belongsTo(BorrowerContract, { foreignKey: 'ContractID' });
 Payments.belongsTo(User, { foreignKey: 'PayerID' });
 
-module.exports = Payments;
+module.exports = { User, BorrowerContract, Payments };
