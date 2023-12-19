@@ -1,27 +1,36 @@
-const { v4: uuidv4 } = require('uuid');
-let sessionStore = {};
+const session = require('express-session');
+const ONE_DAY = 1000 * 60 * 60 * 24; // Milliseconds in a day
 
-const createSession = (userId, userType) => {
-  const sessionId = uuidv4();
-  sessionStore[sessionId] = { userId, userType, createdAt: new Date() };
-  return sessionId;
-};
+module.exports = (app) => {
+  // Create a new session
+  const createSession = (req, userData) => {
+    req.session.user = userData;
+  };
 
-const getSession = (sessionId) => {
-  return sessionStore[sessionId];
-};
+  // Get an existing session
+  const getSession = (req) => {
+    return req.session.user;
+  };
 
-const deleteSession = (sessionId) => {
-  delete sessionStore[sessionId];
-};
+  // Destroy a session
+  const destroySession = (req) => {
+    req.session.destroy(err => {
+      if (err) {
+        console.error("Error destroying session:", err);
+      }
+    });
+  };
 
-const resetSessions = () => {
-  sessionStore = {};
-};
+  // Reset a session
+  const resetSession = (req, newUserData) => {
+    destroySession(req);
+    createSession(req, newUserData);
+  };
 
-module.exports = {
-  createSession,
-  getSession,
-  deleteSession,
-  resetSessions
+  return {
+    createSession,
+    getSession,
+    destroySession,
+    resetSession
+  };
 };
