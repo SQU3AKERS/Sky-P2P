@@ -10,8 +10,10 @@ const initializeDatabase = async () => {
     // Path to your SQL files
     const sqlDirectory = path.join(__dirname, 'storage', 'sql');
 
-    // Read all SQL files from the directory
-    const sqlFiles = fs.readdirSync(sqlDirectory).filter(file => file.endsWith('.sql'));
+    // Read and sort SQL files from the directory
+    const sqlFiles = fs.readdirSync(sqlDirectory)
+                       .filter(file => file.endsWith('.sql'))
+                       .sort(); // This will sort the files alphabetically
 
     for (const file of sqlFiles) {
       const filePath = path.join(sqlDirectory, file);
@@ -19,6 +21,7 @@ const initializeDatabase = async () => {
       
       // Execute the SQL file
       await sequelize.query(sql);
+      console.log(`Executed file: ${file}`);
     }
 
     console.log('Database initialized successfully');
