@@ -12,6 +12,6 @@ User.init({
   DateOfBirth: { type: DataTypes.DATE, allowNull: false },
   Nationality: { type: DataTypes.STRING, allowNull: false },
   UserType: { type: DataTypes.ENUM('Lender', 'Borrower'), allowNull: false },
-}, { sequelize, modelName: 'User', timestamps: false });
+}, { sequelize, modelName: 'User', timestamps: false, tableName: 'Users' });
 
 module.exports = User;

@@ -13,7 +13,7 @@ BorrowerContract.init({
   EndDate: { type: DataTypes.DATE, allowNull: false },
   Status: { type: DataTypes.ENUM('Available', 'Accepted', 'Active', 'Completed', 'Defaulted'), allowNull: false },
   BlockchainRecordID: { type: DataTypes.STRING }
-}, { sequelize, modelName: 'BorrowerContract', timestamps: false });
+}, { sequelize, modelName: 'BorrowerContract', timestamps: false, tableName: 'BorrowerContract'});
 
 // Define relationships
 BorrowerContract.belongsTo(User, { foreignKey: 'BorrowerID' });

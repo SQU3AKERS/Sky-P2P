@@ -13,7 +13,7 @@ Payments.init({
   PaymentDate: { type: DataTypes.DATE, allowNull: false },
   PaymentStatus: { type: DataTypes.ENUM('Pending', 'Completed', 'Late'), allowNull: false },
   BlockchainRecordID: { type: DataTypes.STRING }
-}, { sequelize, modelName: 'Payments', timestamps: false });
+}, { sequelize, modelName: 'Payments', timestamps: false, tableName: 'Payments' });
 
 // Define relationships
 Payments.belongsTo(BorrowerContract, { foreignKey: 'ContractID' });
