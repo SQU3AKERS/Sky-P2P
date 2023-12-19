@@ -19,7 +19,7 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SQU3AKERS/Sky-P2P/issues"
-  },
+  }, 
   "homepage": "https://github.com/SQU3AKERS/Sky-P2P#readme",
   "devDependencies": {
     "concurrently": "^8.2.2"
