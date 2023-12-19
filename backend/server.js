@@ -7,7 +7,6 @@ const registerRoute = require('./routes/registerRoute');
 
 const app = express();
 
-// Place this middleware before your routes
 app.options('*', cors());
 
 app.use(cors());
