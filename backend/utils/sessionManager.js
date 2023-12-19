@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 let sessionStore = {};
 
 const createSession = (userId, userType) => {
-  const sessionId = uuidv4(); // Generate a unique session ID
+  const sessionId = uuidv4();
   sessionStore[sessionId] = { userId, userType, createdAt: new Date() };
   return sessionId;
 };
