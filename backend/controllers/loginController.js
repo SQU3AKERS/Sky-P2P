@@ -1,7 +1,7 @@
 const User = require('../models/userModel'); // Adjust the path as needed
 const bcrypt = require('bcrypt');
 const { createSession } = require('../utils/sessionManager'); // Adjust the path as needed
-const { validateEmail } = require('../utils/validation'); // Adjust the path as needed
+const { validateEmailLogin } = require('../utils/validation'); // Adjust the path as needed
 
 const loginController = {
   login: async (req, res) => {
@@ -9,7 +9,7 @@ const loginController = {
 
     try {
       // Validate Email
-      if (!validateEmail(email)) {
+      if (!validateEmailLogin(email)) {
         return res.status(400).json({ message: "Invalid email format" });
       }
 
