@@ -34,8 +34,9 @@ npm install
 ```
 
 3. Set up the MySQL database:
-+ Create the database and tables using the SQL scripts provided.
-+ Modify backend/config/database.js with your database credentials.
+```
+npm run init-db
+```
 
 ## Running the application
 1. Start both servers:
