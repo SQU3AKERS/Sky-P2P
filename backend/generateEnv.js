@@ -1,16 +1,15 @@
 const fs = require('fs');
-const path = require('path');
-const os = require('os');
 const crypto = require('crypto');
 
-const envFilePath = path.join(__dirname, '.env');
-const generateSecretKey = () => crypto.randomBytes(64).toString('hex');
+const envFile = '.env';
 
-if (!fs.existsSync(envFilePath)) {
-    const secretKey = generateSecretKey();
-    const content = `JWT_SECRET=${secretKey}`;
-    fs.writeFileSync(envFilePath, content, { encoding: 'utf8' });
-    console.log('.env file created with JWT_SECRET.');
+if (!fs.existsSync(envFile)) {
+  // Generate a random secret for the session
+  const sessionSecret = crypto.randomBytes(64).toString('hex');
+
+  // Create the .env file with the SESSION_SECRET
+  fs.writeFileSync(envFile, `SESSION_SECRET=${sessionSecret}\n`, { flag: 'a' });
+  console.log('.env file created with SESSION_SECRET');
 } else {
-    console.log('.env file already exists.');
+  console.log('.env file already exists');
 }

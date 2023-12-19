@@ -1,40 +1,28 @@
-const database = require('../config/database');
+const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const { createSession } = require('../utils/sessionManager');
 
 const loginController = {
-  login: (req, res) => {
+  login: async (req, res) => {
     const { email, password } = req.body;
-    console.log('Attempting database connection...');
-    // Use the existing database connection or pool
-    const query = 'SELECT * FROM Users WHERE Email = ?';
-    database.query(query, [email], async (err, results) => {
-      // Error report
-      if (err) {
-        console.error('Error querying the database:', err);
-        return res.status(500).send('Error querying the database');
+    try {
+      const user = await User.findOne({ where: { Email: email } });
+      if (!user) {
+        console.log('No such user:', user);
+        return res.status(401).send('Invalid credentials');
       }
-      console.log('Connected to database. Yay!');
-      // Login process
-      if (results.length > 0) {
-        try {
-          const match = await bcrypt.compare(password, results[0].PasswordHash);
-          if (match) {
-          const sessionId = createSession(results[0].UserID, results[0].UserType);
-          res.json({ success: true, sessionId, userType: results[0].UserType });
-          } else {
-            console.log('Invalid credentials. Unable to create session.');
-            res.status(401).send('Invalid credentials. Unable to create session.');
-          }
-        } catch (bcryptError) {
-          console.error('Bcrypt error:', bcryptError);
-          res.status(500).send('Server error');
-        }
-      } else {
-        console.log('Invalid credentials. It does not exist.');
-        res.status(401).send('Invalid credentials. It does not exist.');
+      const match = await bcrypt.compare(password, user.PasswordHash);
+      if (!match) {
+        console.log('Password mismatch:', match);
+        return res.status(401).send('Invalid credentials');
       }
-    });
+      const sessionId = createSession(user.UserID, user.UserType);
+      console.log('Session created:', sessionId);
+      res.json({ success: true, sessionId, userType: user.UserType });
+    } catch (err) {
+      console.error('Login error:', err);
+      res.status(500).send('Server error');
+    }
   }
 };
 
