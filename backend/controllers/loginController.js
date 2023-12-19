@@ -1,4 +1,4 @@
-const database = require('../config/database'); // Assuming this exports a pool or a single connection
+const database = require('../config/database');
 const bcrypt = require('bcrypt');
 const { createSession } = require('../utils/sessionManager');
 
@@ -9,12 +9,13 @@ const loginController = {
     // Use the existing database connection or pool
     const query = 'SELECT * FROM Users WHERE Email = ?';
     database.query(query, [email], async (err, results) => {
-
+      // Error report
       if (err) {
         console.error('Error querying the database:', err);
         return res.status(500).send('Error querying the database');
       }
       console.log('Connected to database. Yay!');
+      // Login process
       if (results.length > 0) {
         try {
           const match = await bcrypt.compare(password, results[0].PasswordHash);
