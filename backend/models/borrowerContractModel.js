@@ -18,4 +18,4 @@ BorrowerContract.init({
 // Define relationships
 BorrowerContract.belongsTo(User, { foreignKey: 'BorrowerID' });
 
-module.exports = BorrowerContract;
+module.exports = { User, BorrowerContract };
