@@ -40,8 +40,11 @@ const RegisterComponent = () => {
       alert('Registration successful');
       navigate('/');
     } catch (error) {
-      alert('Registration failed');
-      setFormData({ ...formData, password: '', confirmPassword: '' });
+      if (error.response && error.response.data) {
+        alert(error.response.data.message); // Display error message from server
+      } else {
+        alert('An error occurred during registration'); // Fallback error message
+      }
     }
   };
 

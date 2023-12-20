@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/userModel'); // Adjust the path as needed
-const { validateEmail, validatePassword } = require('../utils/validation'); // Adjust the path as needed
+const User = require('../models/userModel');
+const { validateEmail, validatePassword } = require('../utils/validation');
 
 const saltRounds = 10;
 
@@ -9,28 +9,37 @@ const registerUser = async (req, res) => {
 
   try {
     // Validate Email and Password
-    if (!validateEmail(email) || !validatePassword(password)) {
-      return res.status(400).json({ message: "Invalid email or password" });
+    if (!validateEmail(email)) {
+      return res.status(400).json({ message: "Invalid email format. Please enter a valid email address." });
     }
 
-    // Check if user already exists
-    const existingUser = await User.findOne({ where: { email } });
+    // Check if email already exists in the database
+    const existingUser = await User.findOne({ where: { Email: email } });
     if (existingUser) {
-      return res.status(409).json({ message: "Email already in use" });
+      return res.status(400).json({ message: "Email already registered. Please use a different email." });
+    }
+
+    // Validate Password
+    if (!validatePassword(password)) {
+      return res.status(400).json({ 
+        message: "Invalid password. Password must be 8 to 32 characters long, include at least one lowercase letter, one number, and one special character (!@#$%^&*)." 
+      });
     }
 
     // Hash the password
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
+    console.log('PasswordHash creation attempt:', passwordHash);
+
     // Create new user
     const newUser = await User.create({
-      firstName,
-      lastName,
-      passwordHash,
-      email,
-      dateOfBirth,
-      nationality,
-      userType
+      FirstName: firstName,
+      LastName: lastName,
+      PasswordHash: passwordHash,
+      Email: email,
+      DateOfBirth: dateOfBirth,
+      Nationality: nationality,
+      UserType: userType
     });
 
     console.log("Registration successful", newUser);
