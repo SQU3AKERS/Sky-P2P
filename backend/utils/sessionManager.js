@@ -1,36 +1,38 @@
-const session = require('express-session');
-const ONE_DAY = 1000 * 60 * 60 * 24; // Milliseconds in a day
+const createSession = (req, userData) => {
+  req.session.user = userData;
+  req.session.lastLoginTime = new Date();
+};
 
-module.exports = (app) => {
-  // Create a new session
-  const createSession = (req, userData) => {
-    req.session.user = userData;
-  };
+const getSession = (req) => {
+  return req.session.user;
+};
 
-  // Get an existing session
-  const getSession = (req) => {
-    return req.session.user;
-  };
+const destroySession = (req) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error("Error destroying session:", err);
+    }
+  });
+};
 
-  // Destroy a session
-  const destroySession = (req) => {
-    req.session.destroy(err => {
-      if (err) {
-        console.error("Error destroying session:", err);
-      }
-    });
-  };
+const resetSession = (req, newUserData) => {
+  destroySession(req);
+  createSession(req, newUserData);
+};
 
-  // Reset a session
-  const resetSession = (req, newUserData) => {
-    destroySession(req);
-    createSession(req, newUserData);
-  };
+// Middleware to reset the session after 1 day
+const resetAfterOneDay = (req, res, next) => {
+  const now = new Date();
+  if (req.session.lastLoginTime && (now - req.session.lastLoginTime) > (24 * 60 * 60 * 1000)) {
+    resetSession(req, req.session.user);
+  }
+  next();
+};
 
-  return {
-    createSession,
-    getSession,
-    destroySession,
-    resetSession
-  };
+module.exports = {
+  createSession,
+  getSession,
+  destroySession,
+  resetSession,
+  resetAfterOneDay
 };

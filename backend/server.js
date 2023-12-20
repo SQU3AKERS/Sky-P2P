@@ -10,14 +10,15 @@ const app = express();
 
 app.options('*', cors());
 
-app.use(cors());
-app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET, // It will look for SESSION_SECRET in .env
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // set to true if using https
 }));
+
+app.use(cors());
+app.use(bodyParser.json());
 app.use('/api/users', registerRoute);
 app.use('/api/login', loginRoute);
 
