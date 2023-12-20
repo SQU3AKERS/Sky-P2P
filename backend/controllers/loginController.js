@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/userModel'); // Adjust the path as needed
+const Users = require('../models/userModel'); // Adjust the path as needed
 const { createSession } = require('../utils/sessionManager'); // Adjust the path as needed
 const { validateEmail } = require('../utils/validation'); // Adjust the path as needed
 
@@ -14,7 +14,7 @@ const loginController = {
       }
 
       // Check if user exists
-      const user = await User.findOne({ where: { Email: email } });
+      const user = await Users.findOne({ where: { Email: email } });
       if (!user) {
         console.log('Login attempt with non-existent email:', email);
         return res.status(401).json({ message: "Invalid credentials" });

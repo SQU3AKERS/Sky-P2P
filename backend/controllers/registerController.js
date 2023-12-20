@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/userModel');
+const Users = require('../models/userModel');
 const { validateEmail, validatePassword } = require('../utils/validation');
 
 const saltRounds = 10;
@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
     }
 
     // Check if email already exists in the database
-    const existingUser = await User.findOne({ where: { Email: email } });
+    const existingUser = await Users.findOne({ where: { Email: email } });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered. Please use a different email." });
     }
@@ -32,7 +32,7 @@ const registerUser = async (req, res) => {
     console.log('PasswordHash creation attempt:', passwordHash);
 
     // Create new user
-    const newUser = await User.create({
+    const newUser = await Users.create({
       FirstName: firstName,
       LastName: lastName,
       PasswordHash: passwordHash,
