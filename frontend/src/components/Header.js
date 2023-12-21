@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ userType }) => {
-  // Function to generate navigation based on userType
+const Header = () => {
+  const [userType, setUserType] = useState(null);
+
+  useEffect(() => {
+    // Fetch session data when the component mounts
+    const fetchSessionData = async () => {
+      try {
+        const response = await fetch('/path-to-session-endpoint');
+        const data = await response.json();
+        if (data && data.userType) {
+          setUserType(data.userType); // Set userType in state
+        }
+      } catch (error) {
+        console.error('Error fetching session data:', error);
+      }
+    };
+
+    fetchSessionData();
+  }, []);
+
   const renderNavLinks = () => {
     switch (userType) {
-      case 'borrower':
+      case 'Borrower':
         return (
           <>
             {/* Borrower-specific links */}
@@ -15,7 +33,7 @@ const Header = ({ userType }) => {
             <Link to="/settings">Settings</Link>
           </>
         );
-      case 'lender':
+      case 'Lender':
         return (
           <>
             {/* Lender-specific links */}
