@@ -176,12 +176,113 @@ header {
   text-align: center;
 }
 
-footer {
-  background-color: #f0f0f0;
-  color: black;
-  padding: 1em;
-  text-align: center;
+.platform-title {
+  font-size: 25px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  justify-content: center;
 }
+
+.footer {
+  background-color: #1b1b1b;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align children to the top */
+  flex-wrap: wrap; /* Allow the items to wrap as needed */
+}
+
+.footer > div {
+  padding: 0 10px; /* Add some padding around each section */
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1; /* Each child will take up equal space */
+  min-width: 30%; /* Minimum width for each section */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 15px;
+}
+
+.footer-center h3, .footer-right h3 {
+  margin-bottom: 0.5rem; /* Add some space below the heading */
+}
+
+.footer-center p, .footer-right form {
+  margin-bottom: 0.5rem; /* Add some space below each paragraph and form */
+}
+
+.logo img {
+  max-width: 25px; /* Adjusted max-width for the logo image */
+  height: auto;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will center the content vertically */
+}
+
+.footer-bottom {
+  text-align: center;
+  width: 100%; /* Full width */
+}
+
+.footer input[type="email"], .footer input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  width: calc(100% + 100px); /* Account for padding */
+}
+
+.footer button {
+  padding: 10px;
+  width: calc(100% - 20px); /* Account for padding */
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
+
+.footer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px; /* Spacing between icons */
+}
+
+.social-links img {
+  width: 25px; /* Adjust the size of the social icons as needed */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer > div {
+    width: 100%; /* Full width on small screens */
+  }
+
+  .footer-center, .footer-right {
+    align-items: center; /* Center these on small screens */
+  }
+
+  .footer-bottom {
+    margin-top: 20px; /* Ensure there is space above footer-bottom on small screens */
+  }
+};
 
 @keyframes App-logo-spin {
   from {
