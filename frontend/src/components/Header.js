@@ -29,7 +29,13 @@ const Header = ({ userType }) => {
         return (
           <>
             <Link to="/about-us">About us</Link>
-            <Link to="/blockchain">Blockchain +</Link>
+            <div className="dropdown">
+            <button className="dropbtn">Blockchain +</button>
+            <div className="dropdown-content">
+              <Link to="/transactions">Transactions</Link>
+              <Link to="/credit-scores">Credit Scores</Link>
+            </div>
+          </div>
           </>
         );
     }
@@ -40,7 +46,7 @@ const Header = ({ userType }) => {
       <nav className="navbar">
         {/* Logo and title always show */}
         <Link to="/" className="navbar-logo">
-          <img src="/path-to-512logo.png" alt="Logo" />
+          <img src="logo512.png" alt="Logo" />
           Sky's P2P Lending Platform
         </Link>
         {/* Render links based on user type */}
