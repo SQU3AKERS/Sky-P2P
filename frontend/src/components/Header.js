@@ -4,8 +4,10 @@ import SessionContext from '../contexts/SessionContext';
 
 const Header = () => {
   const sessionData = useContext(SessionContext);
+  console.log('Session Data in Header:', sessionData); // Log session data
 
   const userType = sessionData ? sessionData.userType : null;
+  console.log('User Type:', userType); // Log user type
 
   const renderNavLinks = () => {
     switch (userType) {

@@ -18,6 +18,7 @@ const App = () => {
       // Make the API call to the server to get session data
       const response = await fetch('/api/session');
       const data = await response.json();
+      console.log('Session data:', data); // Log the session data
       setSessionData(data); // Update the session data state
     };
 
