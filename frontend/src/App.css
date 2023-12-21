@@ -169,15 +169,132 @@
   transform: translateX(30%) translateY(-82%);
 }
 
-header {
-  background-color: purple;
+.header {
+  background-color: #343a40; /* Dark gray */
   color: white;
-  padding: 1em;
-  text-align: center;
+  padding: 0.5rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and title */
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-logo img {
+  height: 50px; /* Adjust as needed */
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 20px; /* Space between menu items */
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  color: #007bff; /* Light blue on hover */
+}
+
+.navbar-menu, .dropbtn {
+  color: white; /* Same as other navigation links */
+  background-color: transparent; /* To match the navbar background */
+  padding: 0.5rem 0.75rem; /* Adjust padding to match other nav links */
+  font-size: 1rem; /* Match font size with other nav links */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit; /* To ensure font consistency */
+}
+
+/* Additional hover effect for all links */
+.navbar-menu:hover, .dropbtn:hover {
+  color: #007bff; /* Light blue on hover */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  color: white; /* Same as other navigation links */
+  background-color: transparent; /* To match the navbar background */
+  padding: 0.5rem 0.75rem; /* Adjust padding to match other nav links */
+  font-size: 1rem; /* Match font size with other nav links */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit; /* To ensure font consistency */
+}
+
+.dropbtn:hover {
+  color: #007bff; /* Light blue on hover */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar-auth .btn {
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login {
+  background-color: #007bff; /* Blue */
+  color: white;
+  margin-right: 10px;
+}
+
+.btn-signup {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.btn-login:hover, .btn-signup:hover {
+  opacity: 0.9;
 }
 
 .platform-title {
-  font-size: 25px; /* Set the font size */
+  font-size: 20px; /* Set the font size */
   font-weight: bold; /* Make the text bold */
   justify-content: center;
 }
@@ -220,7 +337,7 @@ header {
 }
 
 .logo img {
-  max-width: 25px; /* Adjusted max-width for the logo image */
+  max-width: 20px; /* Adjusted max-width for the logo image */
   height: auto;
 }
 
@@ -266,6 +383,15 @@ header {
 }
 
 @media (max-width: 768px) {
+  .navbar-menu {
+    display: none; /* Hide the navbar menu on small screens */
+  }
+
+  .navbar-auth {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
   .footer {
     flex-direction: column;
     align-items: center;

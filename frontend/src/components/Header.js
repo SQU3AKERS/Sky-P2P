@@ -3,24 +3,27 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header style={{ background: '#282c34', color: 'white' }}>
-      <nav style={{ display: 'flex', flexDirection: 'column', padding: '10px 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <div>
-            <Link to="/" style={{ color: 'white', textDecoration: 'none', marginRight: '10px' }}>Home</Link> | 
-            <Link to="/about-us" style={{ color: 'white', textDecoration: 'none', margin: '0 10px' }}>About Us</Link> | 
-            <Link to="/support" style={{ color: 'white', textDecoration: 'none', marginLeft: '10px' }}>Support</Link>
+    <header className="header">
+      <nav className="navbar">
+        <Link to="/" className="navbar-logo">
+          <img src="logo512.png" alt="Logo" />
+          Sky's P2P Lending Platform
+        </Link>
+        <div className="navbar-menu">
+          <Link to="/home">Home</Link>
+          <Link to="/about-us">About us</Link>
+          <div className="dropdown">
+            <button className="dropbtn">Blockchain +</button>
+            <div className="dropdown-content">
+              <Link to="/transactions">Transactions</Link>
+              <Link to="/credit-scores">Credit Scores</Link>
+            </div>
           </div>
-          <div>
-            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link> | 
-            <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}> Sign up</Link>
-          </div>
+          <Link to="/support">Support</Link>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-          <Link to="/">
-            <img src="/logo192.png" alt="P2P Icon" style={{ height: '50px', marginRight: '10px' }} />
-          </Link>
-          <h1><Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Sky's P2P Lending Platform</Link></h1>
+        <div className="navbar-auth">
+          <Link to="/login" className="btn btn-login">Login</Link>
+          <Link to="/register" className="btn btn-signup">Sign Up</Link>
         </div>
       </nav>
     </header>
