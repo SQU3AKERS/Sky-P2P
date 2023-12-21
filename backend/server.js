@@ -16,11 +16,19 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // set to true if using https
 }));
+app.get('/api/session', (req, res) => {
+    if (req.session.user) {
+      res.json({ success: true, userType: req.session.user.userType });
+    } else {
+      res.json({ success: false });
+    }
+});
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/users', registerRoute);
 app.use('/api/login', loginRoute);
+app.use('/api/session', loginRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

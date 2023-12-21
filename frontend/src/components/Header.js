@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import SessionContext from '../contexts/SessionContext';
 
 const Header = () => {
-  const [userType, setUserType] = useState(null);
+  const sessionData = useContext(SessionContext);
 
-  useEffect(() => {
-    // Fetch session data when the component mounts
-    const fetchSessionData = async () => {
-      try {
-        const response = await fetch('/path-to-session-endpoint');
-        const data = await response.json();
-        if (data && data.userType) {
-          setUserType(data.userType); // Set userType in state
-        }
-      } catch (error) {
-        console.error('Error fetching session data:', error);
-      }
-    };
-
-    fetchSessionData();
-  }, []);
+  const userType = sessionData ? sessionData.userType : null;
 
   const renderNavLinks = () => {
     switch (userType) {
@@ -80,7 +66,7 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login" className="btn btn-login">Login</Link>
-              <Link to="/signup" className="btn btn-signup">Sign Up</Link>
+              <Link to="/register" className="btn btn-signup">Sign Up</Link>
             </>
           )}
         </div>
