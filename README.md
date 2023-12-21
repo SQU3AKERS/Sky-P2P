@@ -33,7 +33,7 @@ git clone https://github.com/SQU3AKERS/Sky-P2P.git
 npm install
 ```
 
-3. In the ./Sky-P2P directory, set up the MySQL database:
+3. After you have installed MySQL in the above prerequisites. In the ./Sky-P2P directory, set up the MySQL database:
 ```
 npm run init-db
 ```
