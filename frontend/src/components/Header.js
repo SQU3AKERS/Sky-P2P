@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import SessionContext from '../contexts/SessionContext';
 
 const Header = () => {
-  const sessionData = useContext(SessionContext);
-  console.log('Session Data in Header:', sessionData); // Log session data
+  const { sessionData } = useContext(SessionContext);
+  console.log('Session Data in Header:', sessionData);
 
-  const userType = sessionData ? sessionData.userType : null;
+  const userType = sessionData && sessionData.userType ? sessionData.userType : null;
   console.log('User Type:', userType); // Log user type
 
   const renderNavLinks = () => {

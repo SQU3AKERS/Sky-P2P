@@ -14,20 +14,20 @@ const Footer = () => {
             Sky's P2P Lending Platform (registered with relevant authority) is building the financing infrastructure of tomorrow, working with great clients and continued technological development in the P2P lending industry. Interested to join our team? We'd love to hear from you.
           </p>
           <p>
-            Should there be any inconsistencies or conflict between different language versions of this website, the English version shall prevail.
+            I wonder if anyone bothers reading this area. I am trying to make it discreet and let the user feel that this is a professional website that has no flaws. Oh, you're still reading? I guess you can say that this is a rather odd easter egg. Remember to drink water and have a nice day!
           </p>  
           <p>Terms of Use | Privacy Notice | Data Guidelines</p>
           <div className="social-links">
-            <a href="YOUR_FACEBOOK_LINK" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/watch?v=mx86-rTclzA" target="_blank" rel="noopener noreferrer">
               <img src="https://cdn-icons-png.flaticon.com/128/145/145802.png" alt="Facebook" />
             </a>
-            <a href="YOUR_INSTAGRAM_LINK" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/watch?v=mx86-rTclzA" target="_blank" rel="noopener noreferrer">
               <img src="https://cdn-icons-png.flaticon.com/128/4138/4138124.png" alt="Instagram" />
             </a>
-            <a href="YOUR_LINKEDIN_LINK" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/watch?v=mx86-rTclzA" target="_blank" rel="noopener noreferrer">
               <img src="https://cdn-icons-png.flaticon.com/128/4494/4494497.png" alt="LinkedIn" />
             </a>
-            <a href="YOUR_TWITTER_LINK" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/watch?v=mx86-rTclzA" target="_blank" rel="noopener noreferrer">
               <img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="Twitter or X whatever Elon Musk is thinking" />
             </a>
         </div>
@@ -35,7 +35,7 @@ const Footer = () => {
 
       <div className="footer-center">
       <h3>Contacts</h3>
-        <p>Address: Unit E-05-01, Level 5, Asia Pacific University</p>
+        <p>Address: Unit E-05-01, Level 5, Asia Pacific University, Jalan Teknologi 5, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia.</p>
         <p>Email: sky@company.com</p>
         <p>Management Team: +60 10-2200 891</p>
         <p>Public Relation Team: +60 16-6200 891</p>

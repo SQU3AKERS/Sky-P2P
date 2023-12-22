@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const sessionController = require('../utils/sessionManager');
+const sessionManager = require('../utils/sessionManager');
 
-router.post('/session', (req, res) => {
-    console.log('Session request received with data:', req.body);
-    sessionController.getSession(req, res);
+router.get('/getSession', (req, res) => {
+    const sessionData = sessionManager.getSession(req);
+    if (sessionData) {
+        res.json({ success: true, sessionData });
+    } else {
+        res.json({ success: false, message: 'No active session' });
+    }
 });
 
 module.exports = router;

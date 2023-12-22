@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { SessionContext } from '../contexts/SessionContext';
 
 const LoginComponent = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { updateSessionData } = useContext(SessionContext);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -29,6 +31,7 @@ const LoginComponent = () => {
       console.log('Sending login request with:', formData);
       const response = await axios.post('http://localhost:3001/api/login/loginUser', formData);
       console.log('Login response:', response.data);
+      updateSessionData({ userType: response.data.userType });
       // Assuming the response contains the user type
       if (response.data.userType === 'Borrower') {
         navigate('/borrower/BorrowerMainpage');
