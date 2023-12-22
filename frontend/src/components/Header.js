@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 import SessionContext from '../contexts/SessionContext';
 
 const Header = () => {
-  const { sessionData } = useContext(SessionContext);
+  const { sessionData, logout } = useContext(SessionContext);
   console.log('Session Data in Header:', sessionData);
 
   const userType = sessionData && sessionData.userType ? sessionData.userType : null;
-  console.log('User Type:', userType); // Log user type
+  console.log('User Type:', userType);
+
+  const handleLogout = () => {
+    logout(); // This will clear the session data and may also need to inform the backend
+  };
+
+  const homeLink = userType === 'Borrower' ? '/borrower/BorrowerMainpage' :
+                  userType === 'Lender' ? '/lender/LenderMainpage' : '/';
 
   const renderNavLinks = () => {
     switch (userType) {
@@ -15,8 +22,23 @@ const Header = () => {
         return (
           <>
             {/* Borrower-specific links */}
-            <Link to="/contracts">Contract +</Link>
-            <Link to="/rewards">Rewards +</Link>
+            <div className="dropdown">
+              <button className="dropbtn">Contracts +</button>
+              <div className="dropdown-content">
+                <Link to="/borrower/BorrowerActiveContractMarketplace">Contracts Marketplace</Link>
+                <Link to="/borrower/BorrowerActiveContractList">My Contracts</Link>
+                <Link to="/borrower/BorrowerActiveContractCreate">Create Contract</Link>
+                <Link to="/borrower/BorrowerActiveContractPay">Pay Contract</Link>
+              </div>
+            </div>
+            <div className="dropdown">
+              <button className="dropbtn">Rewards +</button>
+              <div className="dropdown-content">
+                <Link to="/borrower/BorrowerRewardsMarketplace">Rewards Marketplace</Link>
+                <Link to="/borrower/BorrowerRewardsList">My Rewards</Link>
+              </div>
+            </div>
+            <Link to="/borrower/BorrowerUpdateProfile">Profile</Link>
             {/* Common links */}
             <Link to="/settings">Settings</Link>
           </>
@@ -25,25 +47,19 @@ const Header = () => {
         return (
           <>
             {/* Lender-specific links */}
-            <Link to="/portfolio">Portfolio</Link>
+            <div className="dropdown">
+              <button className="dropbtn">Contracts +</button>
+              <div className="dropdown-content">
+                <Link to="/lender/LenderActiveContractMarketplace">Contracts Marketplace</Link>
+                <Link to="/lender/LenderPortfolio">My Portfolio</Link>
+              </div>
+            </div>
+            <Link to="/lender/LenderProfileUpdate">Profile</Link>
             {/* Common links */}
             <Link to="/settings">Settings</Link>
           </>
         );
       default:
-        // Links to show when no user is logged in
-        return (
-          <>
-            <Link to="/about-us">About us</Link>
-            <div className="dropdown">
-            <button className="dropbtn">Blockchain +</button>
-            <div className="dropdown-content">
-              <Link to="/transactions">Transactions</Link>
-              <Link to="/credit-scores">Credit Scores</Link>
-            </div>
-          </div>
-          </>
-        );
     }
   };
 
@@ -57,19 +73,27 @@ const Header = () => {
         </Link>
         {/* Render links based on user type */}
         <div className="navbar-menu">
-          <Link to="/home">Home</Link>
+          <Link to={homeLink}>Home</Link>
+          <Link to="/about-us">About us</Link>
+          <div className="dropdown">
+          <button className="dropbtn">Blockchain +</button>
+          <div className="dropdown-content">
+            <Link to="/BlockchainTransactionList">Transactions</Link>
+            <Link to="/BlockchainCreditScoreList">Credit Scores</Link>
+            </div>
+          </div>
           {renderNavLinks()}
           <Link to="/support">Support</Link>
         </div>
         {/* Right side of the navbar */}
         <div className="navbar-auth">
-          {userType ? (
-            <Link to="/logout" className="btn btn-logout">Logout</Link>
+        {userType ? (
+          <button onClick={handleLogout} className="btn btn-logout">Logout</button>
           ) : (
-            <>
-              <Link to="/login" className="btn btn-login">Login</Link>
-              <Link to="/register" className="btn btn-signup">Sign Up</Link>
-            </>
+          <>
+            <Link to="/login" className="btn btn-login">Login</Link>
+            <Link to="/register" className="btn btn-signup">Sign Up</Link>
+          </>
           )}
         </div>
       </nav>
