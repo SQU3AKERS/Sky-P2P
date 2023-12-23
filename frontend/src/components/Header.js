@@ -10,7 +10,8 @@ const Header = () => {
   console.log('User Type:', userType);
 
   const handleLogout = () => {
-    logout(); // This will clear the session data and may also need to inform the backend
+    logout();
+    
   };
 
   const homeLink = userType === 'Borrower' ? '/borrower/BorrowerMainpage' :

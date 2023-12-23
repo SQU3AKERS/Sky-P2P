@@ -46,6 +46,7 @@ export const SessionProvider = ({ children }) => {
     // Optionally, send a request to the backend to invalidate the session
     const response2 = await fetch('http://localhost:3001/api/session/logout', { method: 'POST' });
     const data2 = await response2.json();
+
     console.log('Logging user out:', data2);
   };
 
