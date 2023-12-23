@@ -55,7 +55,7 @@ CREATE TABLE RewardsPoints (
 -- PreviousHash
 -- Timestamp
 -- Nonce
--- Contracts (containing details like BorrowerID, LoanAmount, InterestRate, StartDate, EndDate)
+-- Contracts (containing details like BorrowerID, LoanAmount, InterestRate, StartDate, EndDate, IsActive)
 -- Hash
 
 -- Transaction Blocks:
