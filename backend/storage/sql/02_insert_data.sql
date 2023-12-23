@@ -13,4 +13,10 @@ INSERT INTO Users (UserID, FirstName, LastName, PasswordHash, Email, DateOfBirth
     (11, 'Xia Hao', 'Lee', '$2b$10$P/baycj/Zg9kRyRqBdOq0e01tLn6b53NctseZCfNGaJ/a8F4q1HWy', 'xiahao@mail.com', '2001-08-25', 'Malaysia', 'Lender'),
     (12, 'Poh Eng', 'Gan', '$2b$10$jFvaw.WLlG365bpnwev5GOT6U5ZDT7w/VjcIxOK0X6YK55R2zuQrO', 'poheng@mail.com', '1969-03-23', 'Malaysia', 'Borrower');
 
--- Borrower Contract Table
+-- LenderPortfolio Table
+
+-- RewardsStore Table
+
+-- RewardsOrder Table
+
+-- RewardsPoints Table
