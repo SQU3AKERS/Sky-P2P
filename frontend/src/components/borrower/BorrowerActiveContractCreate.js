@@ -23,24 +23,12 @@ function BorrowerActiveContractCreate() {
     alert('Please enter a start date.');
     return;
     }
-
-    // Calculate end date as 30 days from the start date
-    const startDate = new Date(contractData.startDate);
-    const endDate = new Date(startDate.setDate(startDate.getDate() + 30));
     
-    // Format endDate to YYYY-MM-DD before sending
-    const formattedEndDate = endDate.toISOString().split('T')[0];
-    
-    const contractSubmission = {
-        ...contractData,
-        endDate: formattedEndDate,
-    };
-
     try {
       const response = await fetch('http://localhost:3001/api/contract/createContract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contractSubmission)
+        body: JSON.stringify(contractData)
       });
       
       if (response.ok) {
