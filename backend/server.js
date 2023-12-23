@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const loginRoute = require('./routes/loginRoute');
 const registerRoute = require('./routes/registerRoute');
 const sessionRoute = require('./routes/sessionRoute');
+const contractRoute = require('./routes/contractRoute');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/api/users', registerRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/session', sessionRoute);
+app.use('/api/contract', contractRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
