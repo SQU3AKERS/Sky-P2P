@@ -382,6 +382,48 @@
   height: auto;
 }
 
+.borrower-contract-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.borrower-contract-form .form-group {
+  margin-bottom: 20px;
+}
+
+.borrower-contract-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.borrower-contract-form .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* makes sure the padding doesn't affect the overall width */
+}
+
+.borrower-contract-form .submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6200EE; /* Example primary color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.borrower-contract-form .submit-btn:hover {
+  background-color: #3700B3; /* Darker shade for hover effect */
+}
+
 @media (max-width: 768px) {
   .navbar-menu {
     display: none; /* Hide the navbar menu on small screens */

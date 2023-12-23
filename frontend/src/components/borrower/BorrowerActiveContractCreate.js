@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function BorrowerActiveContract() {
+function BorrowerActiveContractCreate() {
   const [contractData, setContractData] = useState({ /* initial state */ });
   const navigate = useNavigate();
 
@@ -24,11 +24,23 @@ function BorrowerActiveContract() {
     return;
     }
 
+    // Calculate end date as 30 days from the start date
+    const startDate = new Date(contractData.startDate);
+    const endDate = new Date(startDate.setDate(startDate.getDate() + 30));
+    
+    // Format endDate to YYYY-MM-DD before sending
+    const formattedEndDate = endDate.toISOString().split('T')[0];
+    
+    const contractSubmission = {
+        ...contractData,
+        endDate: formattedEndDate,
+    };
+
     try {
       const response = await fetch('http://localhost:3000/api/contract/borrowerContract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contractData)
+        body: JSON.stringify(contractSubmission)
       });
       
       if (response.ok) {
@@ -41,11 +53,22 @@ function BorrowerActiveContract() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Form fields here */}
-      <button type="submit">Create Contract</button>
+    <form onSubmit={handleSubmit} className="borrower-contract-form">
+    <div className="form-group">
+        <label htmlFor="loanAmount">Loan Amount</label>
+        <input type="number" id="loanAmount" name="loanAmount" required onChange={handleChange} />
+    </div>
+    <div className="form-group">
+        <label htmlFor="interestRate">Interest Rate (%)</label>
+        <input type="number" id="interestRate" name="interestRate" step="0.01" required onChange={handleChange} />
+    </div>
+    <div className="form-group">
+        <label htmlFor="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" required onChange={handleChange} />
+    </div>
+    <button type="submit" className="submit-btn">Create Contract</button>
     </form>
   );
 }
 
-export default BorrowerActiveContract;
+export default BorrowerActiveContractCreate;
