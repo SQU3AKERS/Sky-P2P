@@ -14,24 +14,22 @@ CREATE TABLE Users (
 CREATE TABLE LenderPortfolio (
     PortfolioID INT AUTO_INCREMENT PRIMARY KEY,
     LenderID INT NOT NULL,
-    ContractID INT NOT NULL,
+    BlockID VARCHAR(255) NOT NULL,  -- Assuming BlockID is a string; adjust the data type as needed
     InvestmentAmount DECIMAL(19,4) NOT NULL,
     InvestmentDate DATE NOT NULL,
     Status ENUM('Active', 'Earning', 'Completed', 'Defaulted') NOT NULL,
-    FOREIGN KEY (LenderID) REFERENCES Users(UserID),
-    FOREIGN KEY (ContractID) REFERENCES BorrowerContract(ContractID)
+    FOREIGN KEY (LenderID) REFERENCES Users(UserID)
 );
 
 -- Payments Table
 CREATE TABLE Payments (
     PaymentID INT AUTO_INCREMENT PRIMARY KEY,
-    ContractID INT NOT NULL,
+    BlockID VARCHAR(255) NOT NULL,
     PayerID INT NOT NULL,
     PaymentAmount DECIMAL(19,4) NOT NULL,
     PaymentDate DATE NOT NULL,
     PaymentStatus ENUM('Pending', 'Completed', 'Late') NOT NULL,
-    BlockchainRecordID VARCHAR(255),
-    FOREIGN KEY (ContractID) REFERENCES BorrowerContract(ContractID),
+    TransactionRecordID VARCHAR(255),
     FOREIGN KEY (PayerID) REFERENCES Users(UserID)
 );
 
@@ -64,12 +62,20 @@ CREATE TABLE RewardsPoints (
 );
 
 -- The below are Blockchain structure and attributes that are part of the Database + Blockchain hybrid system
+-- Borrower Contract Blocks:
+-- BlockID
+-- PreviousHash
+-- Timestamp
+-- Nonce
+-- Contracts (containing details like BorrowerID, LoanAmount, InterestRate, StartDate, EndDate)
+-- Hash
+
 -- Transaction Blocks:
 -- BlockID
 -- PreviousHash
 -- Timestamp
 -- Nonce
--- Transactions (containing TransactionID, FromUserID, ToUserID, Amount, TransactionDate, Status)
+-- Transactions (containing FromUserID, ToUserID, Amount, TransactionDate, Status)
 -- Hash
 
 -- Credit Score Blocks:
@@ -78,12 +84,4 @@ CREATE TABLE RewardsPoints (
 -- Timestamp
 -- Nonce
 -- CreditScores (containing UserID, CreditScore, ScoreDate)
--- Hash
-
--- Borrower Contract Blocks:
--- BlockID
--- PreviousHash
--- Timestamp
--- Nonce
--- Contracts (containing details like ContractID, BorrowerID, LoanAmount, InterestRate, StartDate, EndDate, Status)
 -- Hash
