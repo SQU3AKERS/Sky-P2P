@@ -35,6 +35,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (PayerID) REFERENCES Users(UserID)
 );
 
+-- RewardsStore Table
 CREATE TABLE RewardsStore (
     ItemID INT AUTO_INCREMENT PRIMARY KEY,
     ItemName VARCHAR(255) NOT NULL,
@@ -42,6 +43,7 @@ CREATE TABLE RewardsStore (
     PointsCost INT NOT NULL
 );
 
+-- RewardsOrder Table
 CREATE TABLE RewardsOrder (
     OrderID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT NOT NULL,
