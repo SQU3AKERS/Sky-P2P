@@ -21,18 +21,6 @@ CREATE TABLE LenderPortfolio (
     FOREIGN KEY (LenderID) REFERENCES Users(UserID)
 );
 
--- Payments Table
-CREATE TABLE Payments (
-    PaymentID INT AUTO_INCREMENT PRIMARY KEY,
-    BlockID VARCHAR(255) NOT NULL,
-    PayerID INT NOT NULL,
-    PaymentAmount DECIMAL(19,4) NOT NULL,
-    PaymentDate DATE NOT NULL,
-    PaymentStatus ENUM('Pending', 'Completed', 'Late') NOT NULL,
-    TransactionRecordID VARCHAR(255),
-    FOREIGN KEY (PayerID) REFERENCES Users(UserID)
-);
-
 -- RewardsStore Table
 CREATE TABLE RewardsStore (
     ItemID INT AUTO_INCREMENT PRIMARY KEY,
@@ -75,7 +63,15 @@ CREATE TABLE RewardsPoints (
 -- PreviousHash
 -- Timestamp
 -- Nonce
--- Transactions (containing FromUserID, ToUserID, Amount, TransactionDate, Status)
+-- Transactions (containing TransactionID, FromUserID (Lender), ToUserID (Borrower), Amount, TransactionDate)
+-- Hash
+
+-- Payment Blocks:
+-- BlockID
+-- PreviousHash
+-- Timestamp
+-- Nonce
+-- Payments (containing PaymentID, ContractBlockID, PayerID (Borrower), PaymentAmount, PaymentDate)
 -- Hash
 
 -- Credit Score Blocks:
