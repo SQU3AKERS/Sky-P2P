@@ -11,7 +11,7 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    
+    window.location.href = "http://localhost:3000/";
   };
 
   const homeLink = userType === 'Borrower' ? '/borrower/BorrowerMainpage' :
@@ -68,7 +68,7 @@ const Header = () => {
     <header className="header">
       <nav className="navbar">
         {/* Logo and title always show */}
-        <Link to="/" className="navbar-logo">
+        <Link to={homeLink} className="navbar-logo">
           <img src="logo512.png" alt="Logo" />
           Sky's P2P Lending Platform
         </Link>
@@ -79,6 +79,7 @@ const Header = () => {
           <div className="dropdown">
           <button className="dropbtn">Blockchain +</button>
           <div className="dropdown-content">
+            <Link to="/BlockchainContractList">Contracts</Link>
             <Link to="/BlockchainTransactionList">Transactions</Link>
             <Link to="/BlockchainCreditScoreList">Credit Scores</Link>
             </div>

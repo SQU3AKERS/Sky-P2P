@@ -10,19 +10,6 @@ CREATE TABLE Users (
     UserType ENUM('Lender', 'Borrower') NOT NULL
 );
 
--- BorrowerContract Table
-CREATE TABLE BorrowerContract (
-    ContractID INT AUTO_INCREMENT PRIMARY KEY,
-    BorrowerID INT NOT NULL,
-    LoanAmount DECIMAL(19,4) NOT NULL,
-    InterestRate DECIMAL(5,2) NOT NULL,
-    StartDate DATE NOT NULL,
-    EndDate DATE NOT NULL,
-    Status ENUM('Available', 'Accepted', 'Active', 'Completed', 'Defaulted') NOT NULL,
-    BlockchainRecordID VARCHAR(255),
-    FOREIGN KEY (BorrowerID) REFERENCES Users(UserID)
-);
-
 -- LenderPortfolio Table
 CREATE TABLE LenderPortfolio (
     PortfolioID INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,16 +35,53 @@ CREATE TABLE Payments (
     FOREIGN KEY (PayerID) REFERENCES Users(UserID)
 );
 
+CREATE TABLE RewardsStore (
+    ItemID INT AUTO_INCREMENT PRIMARY KEY,
+    ItemName VARCHAR(255) NOT NULL,
+    ItemDescription TEXT,
+    PointsCost INT NOT NULL
+);
+
+CREATE TABLE RewardsOrder (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    ItemID INT NOT NULL,
+    OrderDate DATE NOT NULL,
+    Status ENUM('Pending', 'Completed') NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (ItemID) REFERENCES RewardsStore(ItemID)
+);
+
 -- RewardsPoints Table
 CREATE TABLE RewardsPoints (
     RewardsID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT NOT NULL,
     Points INT NOT NULL,
-    EarnedDate DATE NOT NULL,
-    Description VARCHAR(255),
+    AcquiredDate DATE NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
--- Attributes for Blockchain Storage:
--- Transactions: TransactionID, FromUserID, ToUserID, Amount, TransactionDate, Status.
--- Credit Score: UserID, CreditScore, ScoreDate.
+-- The below are Blockchain structure and attributes that are part of the Database + Blockchain hybrid system
+-- Transaction Blocks:
+-- BlockID
+-- PreviousHash
+-- Timestamp
+-- Nonce
+-- Transactions (containing TransactionID, FromUserID, ToUserID, Amount, TransactionDate, Status)
+-- Hash
+
+-- Credit Score Blocks:
+-- BlockID
+-- PreviousHash
+-- Timestamp
+-- Nonce
+-- CreditScores (containing UserID, CreditScore, ScoreDate)
+-- Hash
+
+-- Borrower Contract Blocks:
+-- BlockID
+-- PreviousHash
+-- Timestamp
+-- Nonce
+-- Contracts (containing details like ContractID, BorrowerID, LoanAmount, InterestRate, StartDate, EndDate, Status)
+-- Hash
