@@ -4,5 +4,5 @@ module.exports = async function(deployer) {
     await deployer.deploy(BorrowerContract);
     const instance = await BorrowerContract.deployed();
  
-    console.log(`BorrowerContract has been deployed to: ${instance.address}`);
+    console.log(`Borrower Contract has been deployed to: ${instance.address}`);
 };
