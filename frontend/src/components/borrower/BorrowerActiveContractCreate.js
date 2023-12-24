@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SessionContext } from '../../contexts/SessionContext';
+import getEthereumAddress from '../../utils/getEthereumAddress';
 
 function BorrowerActiveContractCreate() {
+  const session = useContext(SessionContext);
   const [contractData, setContractData] = useState({ /* initial state */ });
   const navigate = useNavigate();
 
@@ -24,16 +27,19 @@ function BorrowerActiveContractCreate() {
     return;
     }
     
+    const ethereumAddress = await getEthereumAddress();
+    const sessionUserId = session.Id;
+    console.log('User ID found:', sessionUserId);
     try {
       const response = await fetch('http://localhost:3001/api/contract/createContract', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contractData)
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...contractData, borrowerId: session.userID, senderAddress: ethereumAddress })
       });
-      
+
       if (response.ok) {
-        navigate('/mainpage'); // Redirect to mainpage
-        alert('Contract created successfully!'); // Show success message
+        navigate('/BorrowerMainpage');
+        alert('Contract created successfully!');
       }
     } catch (error) {
       console.error('Contract creation failed:', error);
@@ -43,7 +49,7 @@ function BorrowerActiveContractCreate() {
   return (
     <form onSubmit={handleSubmit} className="borrower-contract-form">
     <div className="form-group">
-        <label htmlFor="loanAmount">Loan Amount</label>
+        <label htmlFor="loanAmount">Loan Amount in MYR</label>
         <input type="number" id="loanAmount" name="loanAmount" required onChange={handleChange} />
     </div>
     <div className="form-group">

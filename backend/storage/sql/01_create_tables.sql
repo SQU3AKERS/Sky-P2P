@@ -63,7 +63,7 @@ CREATE TABLE RewardsPoints (
 -- PreviousHash
 -- Timestamp
 -- Nonce
--- Transactions (containing TransactionID, FromUserID (Lender), ToUserID (Borrower), Amount, TransactionDate)
+-- Transactions (containing FromUserID (Lender), ToUserID (Borrower), Amount, TransactionDate)
 -- Hash
 
 -- Payment Blocks:
@@ -71,7 +71,7 @@ CREATE TABLE RewardsPoints (
 -- PreviousHash
 -- Timestamp
 -- Nonce
--- Payments (containing PaymentID, ContractBlockID, PayerID (Borrower), PaymentAmount, PaymentDate)
+-- Payments (containing ContractBlockID, PayerID (Borrower), PaymentAmount, PaymentDate)
 -- Hash
 
 -- Credit Score Blocks:
