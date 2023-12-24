@@ -22,7 +22,6 @@ console.log('SenderAddress:', contractData.senderAddress);
 
 // Convert startDate from 'YYYY-MM-DD' to Unix timestamp
 const startDateTimestamp = new Date(startDate).getTime() / 1000;
-
     try {
         const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
         const gas = await createContractMethod.estimateGas({ from: senderAddress });
@@ -49,16 +48,21 @@ contractController.getContractDetails = async (contractId) => {
 
 // List contracts based on the borrowerId within the contract
 contractController.listUserContracts = async (borrowerId) => {
-    try {
-      const allContracts = await contract.methods.listContracts().call();
-      const userContracts = allContracts.filter(contract => contract.borrowerId === borrowerId);
-      console.log('User Contracts:', userContracts);
-      return userContracts;
-    } catch (error) {
+  try {
+      // Call the smart contract's listUserContracts method with the borrowerId
+      const detailedUserContracts = await contract.methods.listAllContractsForBorrowerId(borrowerId).call();
+      console.log('Detailed User Contracts:', detailedUserContracts);
+      return detailedUserContracts.map(contract => ({
+        ...contract,
+        startDate: new Date(contract.startDate * 1000).toLocaleDateString(),
+        endDate: new Date(contract.endDate * 1000).toLocaleDateString(),
+        // Additional formatting can be done here, like converting amounts from Wei to Ether
+      }));
+  } catch (error) {
       console.error('Error listing user contracts:', error);
       throw error;
-    }
-  };
+  }
+};
 
 // List the 20 most recently uploaded contracts regardless of the user
 contractController.listAllContracts = async () => {

@@ -27,7 +27,7 @@ const Header = () => {
               <button className="dropbtn">Contracts +</button>
               <div className="dropdown-content">
                 <Link to="/borrower/BorrowerActiveContractMarketplace">Contracts Marketplace</Link>
-                <Link to="/borrower/BorrowerActiveContractList">My Contracts</Link>
+                <Link to="/borrower/BorrowerActiveContractUser">My Contracts</Link>
                 <Link to="/borrower/BorrowerActiveContractCreate">Create Contract</Link>
                 <Link to="/borrower/BorrowerActiveContractPay">Pay Contract</Link>
               </div>

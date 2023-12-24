@@ -13,6 +13,18 @@ contract BorrowerContract {
         bool isActive;
     }
 
+    // Define a new struct to hold all relevant information for the front end
+    struct DetailedContract {
+        uint256 id;
+        uint256 borrowerId;
+        address borrower;
+        uint256 loanAmount;
+        uint256 interestRate;
+        uint256 startDate;
+        uint256 endDate;
+        bool isActive;
+    }
+
     Contract[] public contracts;
 
     modifier contractExists(uint _id) {
@@ -36,16 +48,45 @@ contract BorrowerContract {
         contractToUpdate.interestRate = _interestRate;
     }
 
-    function listUserContracts(address _user) public view returns (uint256[] memory) {
-        uint256[] memory userContractIds = new uint256[](contracts.length);
-        uint currentIndex = 0;
-        for (uint i = 0; i < contracts.length; i++) {
-            if (contracts[i].borrower == _user) {
-                userContractIds[currentIndex] = i;
+    function listAllContractsForBorrowerId(uint256 _borrowerId) public view returns (DetailedContract[] memory) {
+        uint256[] memory contractIndices = listUserContracts(_borrowerId);
+        DetailedContract[] memory detailedContracts = new DetailedContract[](contractIndices.length);
+
+        for (uint256 i = 0; i < contractIndices.length; i++) {
+            uint256 contractIndex = contractIndices[i];
+            Contract storage contractItem = contracts[contractIndex];
+            detailedContracts[i] = DetailedContract(
+                contractItem.id,
+                contractItem.borrowerId,
+                contractItem.borrower,
+                contractItem.loanAmount,
+                contractItem.interestRate,
+                contractItem.startDate,
+                contractItem.endDate,
+                contractItem.isActive
+            );
+        }
+
+        return detailedContracts;
+    }
+
+    function listUserContracts(uint256 _borrowerId) internal view returns (uint256[] memory) {
+        uint256 contractCount = 0;
+        for (uint256 i = 0; i < contracts.length; i++) {
+            if (contracts[i].borrowerId == _borrowerId) {
+                contractCount++;
+            }
+        }
+
+        uint256[] memory contractIndices = new uint256[](contractCount);
+        uint256 currentIndex = 0;
+        for (uint256 i = 0; i < contracts.length; i++) {
+            if (contracts[i].borrowerId == _borrowerId) {
+                contractIndices[currentIndex] = i;
                 currentIndex++;
             }
         }
-        return userContractIds;
+        return contractIndices;
     }
 
     function getContractDetails(uint _id) public view contractExists(_id) returns (Contract memory) {

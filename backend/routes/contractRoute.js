@@ -38,14 +38,15 @@ router.get('/contractDetails/:id', async (req, res) => {
     }
 });
 
-// List contracts for a user
-router.get('/userContracts/:userAddress', async (req, res) => {
+// List contracts for the current session user based on userId
+router.get('/user/:userId', async (req, res) => {
     try {
-        console.log(`Listing contracts for user ${req.params.userAddress}`);
-        const result = await contractController.listUserContracts(req.params.userAddress);
+        const userId = parseInt(req.params.userId); // Assuming userId is an integer
+        console.log(`Listing contracts for user with ID ${userId}`);
+        const result = await contractController.listUserContracts(userId);
         res.status(200).json(result);
     } catch (error) {
-        console.error(`Error listing contracts for user ${req.params.userAddress}:`, error);
+        console.error(`Error listing contracts for user with ID ${req.params.userId}:`, error);
         res.status(500).send(error.toString());
     }
 });
