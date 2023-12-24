@@ -35,20 +35,70 @@ const startDateTimestamp = new Date(startDate).getTime() / 1000;
     }
 };
 
-contractController.updateContract = async (contractId, updateData, senderAddress) => {
-    // Your implementation here. Use contract.methods.updateContract(...) and send transaction
-};
-
 contractController.getContractDetails = async (contractId) => {
-    // Your implementation here. Use contract.methods.getContractDetails(...)
-};
+    try {
+      // Call the smart contract's getContractDetails method with the contractId
+      const contractDetails = await contract.methods.getContractDetails(contractId).call();
+      console.log('Contract Details:', contractDetails);
+      return contractDetails;
+    } catch (error) {
+      console.error('Error retrieving contract details:', error);
+      throw error;
+    }
+  };  
 
-contractController.listUserContracts = async (userAddress) => {
-    // Your implementation here. Use contract.methods.listUserContracts(...)
-};
+// List contracts based on the borrowerId within the contract
+contractController.listUserContracts = async (borrowerId) => {
+    try {
+      const allContracts = await contract.methods.listContracts().call();
+      const userContracts = allContracts.filter(contract => contract.borrowerId === borrowerId);
+      console.log('User Contracts:', userContracts);
+      return userContracts;
+    } catch (error) {
+      console.error('Error listing user contracts:', error);
+      throw error;
+    }
+  };
 
-contractController.invalidateContract = async (contractId, senderAddress) => {
-    // Your implementation here. Use contract.methods.invalidateContract(...) and send transaction
-};
+// List the 20 most recently uploaded contracts regardless of the user
+contractController.listAllContracts = async () => {
+    try {
+      const allContracts = await contract.methods.listContracts().call();
+      const recentContracts = allContracts.slice(-20); // Get the last 20 contracts
+      console.log('Recent Contracts:', recentContracts);
+      return recentContracts;
+    } catch (error) {
+      console.error('Error listing all contracts:', error);
+      throw error;
+    }
+  };
+
+  
+contractController.updateContract = async (contractId, updateData, senderAddress) => {
+    try {
+      const { loanAmount, interestRate } = updateData;
+      const updateContractMethod = contract.methods.updateContract(contractId, loanAmount, interestRate);
+      const gas = await updateContractMethod.estimateGas({ from: senderAddress });
+      const result = await updateContractMethod.send({ from: senderAddress, gas });
+      console.log('Contract updated:', result);
+      return result;
+    } catch (error) {
+      console.error('Error updating contract:', error);
+      throw error;
+    }
+  };
+
+  contractController.invalidateContract = async (contractId, senderAddress) => {
+    try {
+      const invalidateContractMethod = contract.methods.invalidateContract(contractId);
+      const gas = await invalidateContractMethod.estimateGas({ from: senderAddress });
+      const result = await invalidateContractMethod.send({ from: senderAddress, gas });
+      console.log('Contract invalidated:', result);
+      return result;
+    } catch (error) {
+      console.error('Error invalidating contract:', error);
+      throw error;
+    }
+  };
 
 module.exports = contractController;
