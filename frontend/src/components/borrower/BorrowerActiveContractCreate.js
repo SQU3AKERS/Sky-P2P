@@ -5,6 +5,7 @@ import getEthereumAddress from '../../utils/getEthereumAddress';
 
 function BorrowerActiveContractCreate() {
   const session = useContext(SessionContext);
+  console.log('SessionContext in Create:', session);
   const [contractData, setContractData] = useState({ /* initial state */ });
   const navigate = useNavigate();
 
@@ -28,17 +29,17 @@ function BorrowerActiveContractCreate() {
     }
     
     const ethereumAddress = await getEthereumAddress();
-    const sessionUserId = session.Id;
+    const sessionUserId = session.sessionData.userId;
     console.log('User ID found:', sessionUserId);
     try {
       const response = await fetch('http://localhost:3001/api/contract/createContract', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...contractData, borrowerId: session.userID, senderAddress: ethereumAddress })
+          body: JSON.stringify({ ...contractData, borrowerId: sessionUserId, senderAddress: ethereumAddress })
       });
 
       if (response.ok) {
-        navigate('/BorrowerMainpage');
+        navigate('/borrower/BorrowerMainpage');
         alert('Contract created successfully!');
       }
     } catch (error) {

@@ -30,7 +30,7 @@ const loginController = {
       // Create session
       const sessionId = createSession(req, { userID: user.UserID, userType: user.UserType });
       console.log('Login successful, session created:', sessionId);
-      res.json({ success: true, sessionId: req.sessionID, userType: user.UserType });
+      res.json({ success: true, sessionId: req.sessionID, userType: user.UserType, userID: user.UserID });
 
     } catch (err) {
       console.error('Login error for user:', email, 'Error:', err);

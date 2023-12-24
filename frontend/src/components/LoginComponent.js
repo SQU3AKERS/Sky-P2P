@@ -31,7 +31,10 @@ const LoginComponent = () => {
       console.log('Sending login request with:', formData);
       const response = await axios.post('http://localhost:3001/api/login/loginUser', formData);
       console.log('Login response:', response.data);
-      updateSessionData({ userType: response.data.userType });
+      updateSessionData({ 
+        userType: response.data.userType,
+        userId: response.data.userID // or userID, depending on the property name in the response
+      });
       // Assuming the response contains the user type
       if (response.data.userType === 'Borrower') {
         navigate('/borrower/BorrowerMainpage');

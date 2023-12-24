@@ -14,7 +14,7 @@ export const SessionProvider = ({ children }) => {
   useEffect(() => {
     // Fetch the session data when the component mounts
     const fetchSessionData = async () => {
-    const storedSessionData = localStorage.getItem('sessionData'); // Retrieve from localStorage
+    const storedSessionData = localStorage.getItem('sessionData');
       if (storedSessionData) {
         setSessionData(JSON.parse(storedSessionData));
       } else {
@@ -24,7 +24,7 @@ export const SessionProvider = ({ children }) => {
           console.log('Data received:', data);
           setSessionData(data);
           if (data && data.success) {
-            localStorage.setItem('sessionData', JSON.stringify(data)); // Save to localStorage
+            localStorage.setItem('sessionData', JSON.stringify(data));
           }
         } catch (error) {
           console.error('Error fetching session data:', error);

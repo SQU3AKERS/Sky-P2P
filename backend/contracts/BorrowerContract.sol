@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 contract BorrowerContract {
     struct Contract {
         uint256 id;
+        uint256 borrowerId; // Added field
         address borrower;
         uint256 loanAmount;
         uint256 interestRate;
@@ -24,9 +25,9 @@ contract BorrowerContract {
         _;
     }
 
-    function createContract(uint _loanAmount, uint _interestRate, uint _startDate) public {
+    function createContract(uint _borrowerId, uint _loanAmount, uint _interestRate, uint _startDate) public {
         uint _endDate = _startDate + 30 days;
-        contracts.push(Contract(contracts.length, msg.sender, _loanAmount, _interestRate, _startDate, _endDate, true));
+        contracts.push(Contract(contracts.length, _borrowerId, msg.sender, _loanAmount, _interestRate, _startDate, _endDate, true));
     }
 
     function updateContract(uint _id, uint _loanAmount, uint _interestRate) public contractExists(_id) onlyBorrower(_id) {
