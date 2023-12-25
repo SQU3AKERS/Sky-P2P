@@ -40,8 +40,6 @@ const Header = () => {
               </div>
             </div>
             <Link to="/borrower/BorrowerUpdateProfile">Profile</Link>
-            {/* Common links */}
-            <Link to="/settings">Settings</Link>
           </>
         );
       case 'Lender':

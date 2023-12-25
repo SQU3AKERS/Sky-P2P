@@ -24,7 +24,7 @@ useEffect(() => {
     };
   
     fetchContracts();
-}, [session.sessionData.userId]); // Dependency array ensures useEffect runs when userId updates
+}, [session.sessionData.userId]);
 
   return (
     <div className="contracts-container">

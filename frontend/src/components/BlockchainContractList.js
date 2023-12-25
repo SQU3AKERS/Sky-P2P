@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function AllContractsDisplay() {
+function BlockchainContractList() {
     const [contracts, setContracts] = useState([]);
   
     useEffect(() => {
@@ -41,4 +41,4 @@ function AllContractsDisplay() {
   );
 }
 
-export default AllContractsDisplay;
+export default BlockchainContractList;

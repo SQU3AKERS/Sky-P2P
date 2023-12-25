@@ -424,6 +424,31 @@
   background-color: #3700B3; /* Darker shade for hover effect */
 }
 
+.contracts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contract-box-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contract-box {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.contract-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .navbar-menu {
     display: none; /* Hide the navbar menu on small screens */
