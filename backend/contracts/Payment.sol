@@ -9,13 +9,15 @@ contract PaymentContract {
         uint paymentAmount;
         uint paymentDate;
         bytes32 blockHash;
+        uint256 blockNumber;
     }
 
     Payment[] public payments;
 
     function createPayment(uint _contractBlockId, uint _borrowerId, uint _paymentAmount, uint _paymentDate) public {
-        bytes32 hashOfRecentBlock = blockhash(block.number - 1);
-        payments.push(Payment(payments.length, _contractBlockId, _borrowerId, _paymentAmount, _paymentDate, hashOfRecentBlock));
+        bytes32 hashOfPreviousBlock = blockhash(block.number - 1);
+        uint256 currentBlockNumber = block.number;
+        payments.push(Payment(payments.length, _contractBlockId, _borrowerId, _paymentAmount, _paymentDate, hashOfPreviousBlock, currentBlockNumber));
     }
 
     function getAllPayments() public view returns (Payment[] memory) {

@@ -9,13 +9,15 @@ contract TransactionContract {
         uint amount;
         uint transactionDate;
         bytes32 blockHash;
+        uint256 blockNumber;
     }
 
     Transaction[] public transactions;
 
     function createTransaction(uint _lenderId, uint _borrowerId, uint _amount, uint _transactionDate) public {
-        bytes32 hashOfRecentBlock = blockhash(block.number - 1);
-        transactions.push(Transaction(transactions.length, _lenderId, _borrowerId, _amount, _transactionDate, hashOfRecentBlock));
+        bytes32 hashOfPreviousBlock = blockhash(block.number - 1);
+        uint256 currentBlockNumber = block.number;
+        transactions.push(Transaction(transactions.length, _lenderId, _borrowerId, _amount, _transactionDate, hashOfPreviousBlock, currentBlockNumber));
     }
 
     function getAllTransactions() public view returns (Transaction[] memory) {

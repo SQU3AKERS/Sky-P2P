@@ -8,13 +8,15 @@ contract CreditScoreContract {
         uint score;
         uint scoreDate;
         bytes32 blockHash;
+        uint256 blockNumber;
     }
 
     CreditScore[] public creditScores;
 
     function createCreditScore(uint _borrowerId, uint _score, uint _scoreDate) public {
-        bytes32 hashOfRecentBlock = blockhash(block.number - 1);
-        creditScores.push(CreditScore(creditScores.length, _borrowerId, _score, _scoreDate, hashOfRecentBlock));
+        bytes32 hashOfPreviousBlock = blockhash(block.number - 1);
+        uint256 currentBlockNumber = block.number;
+        creditScores.push(CreditScore(creditScores.length, _borrowerId, _score, _scoreDate, hashOfPreviousBlock, currentBlockNumber));
     }
 
     function getAllCreditScores() public view returns (CreditScore[] memory) {
