@@ -7,6 +7,7 @@ const loginRoute = require('./routes/loginRoute');
 const registerRoute = require('./routes/registerRoute');
 const sessionRoute = require('./routes/sessionRoute');
 const contractRoute = require('./routes/contractRoute');
+const transactionRoute = require('./routes/transactionRoute');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/users', registerRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/session', sessionRoute);
 app.use('/api/contract', contractRoute);
+app.use('/api/transaction', transactionRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

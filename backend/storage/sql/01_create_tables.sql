@@ -14,7 +14,7 @@ CREATE TABLE Users (
 CREATE TABLE LenderPortfolio (
     PortfolioID INT AUTO_INCREMENT PRIMARY KEY,
     LenderID INT NOT NULL,
-    BlockID VARCHAR(255) NOT NULL,
+    BlockID VARCHAR(255) NOT NULL, -- Block from Borrower Contract
     InvestmentAmount DECIMAL(19,4) NOT NULL,
     InvestmentDate DATE NOT NULL,
     Status ENUM('Active', 'Earning', 'Completed', 'Defaulted') NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE RewardsPoints (
 -- Hash
 
 -- Payment Blocks:
--- BlockID
+-- BlockID from Contract
 -- PreviousHash
 -- Timestamp
 -- Nonce

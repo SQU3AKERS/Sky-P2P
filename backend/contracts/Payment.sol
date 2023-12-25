@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 contract PaymentContract {
     struct Payment {
         uint id;
-        uint contractBlockId;
+        uint contractBlockId; // From Contract
         uint borrowerId;
         uint paymentAmount;
         uint paymentDate;
