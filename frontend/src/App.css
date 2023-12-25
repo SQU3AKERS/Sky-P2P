@@ -424,28 +424,43 @@
   background-color: #3700B3; /* Darker shade for hover effect */
 }
 
-.contracts-container {
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.contract-box-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.contract-box {
-  border: 1px solid #ddd;
+.modal-content {
+  background-color: white;
   padding: 20px;
-  width: 300px;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  max-width: 500px;
+}
+
+.close {
+  float: right;
+  font-size: 1.5em;
   cursor: pointer;
 }
 
+.contract-box {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 .contract-box:hover {
-  transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 

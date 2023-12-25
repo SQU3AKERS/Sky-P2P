@@ -28,7 +28,7 @@ function BorrowerActiveContractMarketplace() {
                 <Link to={{ 
                     pathname: `/contract/${contract.id}`, 
                     state: { contract } 
-                }} key={index} className="contract-box-link">
+                }} key={index} className="contract-box-link"> 
                     <div className="contract-box">
                         <h3>Contract {index + 1}</h3>
                         <p>Contract ID in Network: {contract.id}</p>
