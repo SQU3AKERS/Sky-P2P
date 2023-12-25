@@ -8,12 +8,14 @@ contract PaymentContract {
         uint borrowerId;
         uint paymentAmount;
         uint paymentDate;
+        bytes32 blockHash;
     }
 
     Payment[] public payments;
 
     function createPayment(uint _contractBlockId, uint _borrowerId, uint _paymentAmount, uint _paymentDate) public {
-        payments.push(Payment(payments.length, _contractBlockId, _borrowerId, _paymentAmount, _paymentDate));
+        bytes32 hashOfRecentBlock = blockhash(block.number - 1);
+        payments.push(Payment(payments.length, _contractBlockId, _borrowerId, _paymentAmount, _paymentDate, hashOfRecentBlock));
     }
 
     function getAllPayments() public view returns (Payment[] memory) {

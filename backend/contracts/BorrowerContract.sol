@@ -10,7 +10,9 @@ contract BorrowerContract {
         uint256 interestRate;
         uint256 startDate;
         uint256 endDate;
+        bytes32 blockHash; // Added field for block hash
     }
+
 
     Contract[] public contracts;
 
@@ -21,7 +23,8 @@ contract BorrowerContract {
 
     function createContract(uint _borrowerId, uint _loanAmount, uint _interestRate, uint _startDate) public {
         uint _endDate = _startDate + 30 days;
-        contracts.push(Contract(contracts.length, _borrowerId, msg.sender, _loanAmount, _interestRate, _startDate, _endDate));
+        bytes32 hashOfRecentBlock = blockhash(block.number - 1);
+        contracts.push(Contract(contracts.length, _borrowerId, msg.sender, _loanAmount, _interestRate, _startDate, _endDate, hashOfRecentBlock));
     }
 
     function listAllContractsForBorrowerId(uint256 _borrowerId) public view returns (Contract[] memory) {

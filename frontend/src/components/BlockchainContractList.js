@@ -28,6 +28,7 @@ function AllContractsDisplay() {
         <div key={index} className="contract-box">
           <h3>Contract {index + 1}</h3>
           <p>Block ID: {contract.id}</p>
+          <p>Block Hash: {contract.blockHash}</p>
           <p>Borrower: {contract.borrowerName}</p>
           <p>Loan Amount: {contract.loanAmount}</p>
           <p>Interest Rate: {contract.interestRate}%</p>
