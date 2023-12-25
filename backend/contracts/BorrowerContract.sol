@@ -10,7 +10,7 @@ contract BorrowerContract {
         uint256 interestRate;
         uint256 startDate;
         uint256 endDate;
-        bytes32 blockHash; // Added field for block hash
+        bytes32 blockHash;
     }
 
 
