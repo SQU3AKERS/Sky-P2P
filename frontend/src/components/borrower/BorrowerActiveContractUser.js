@@ -35,7 +35,6 @@ useEffect(() => {
           <p>Current Block Number in Network: {contract.blockNumber}</p>
           <p>Previous Block Hash in Network: {contract.blockHash}</p>
           <p>Transacted using this account: {contract.borrower}</p>
-          <p>Borrower ID: {contract.borrowerId}</p>
           <p>Loan Amount: RM {contract.loanAmount}</p>
           <p>Interest Rate: {contract.interestRate}%</p>
           <p>Start Date: {contract.startDate}</p>
