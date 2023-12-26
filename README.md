@@ -36,7 +36,7 @@ npm inst
 
 3. After you have installed MySQL, Ganache, and Truffle in the above prerequisites. In the ./Sky-P2P directory, set up the MySQL database:
 ```
-npm run init
+npm init
 ```
 
 ## Running the application
