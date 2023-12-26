@@ -29,7 +29,7 @@
 git clone https://github.com/SQU3AKERS/Sky-P2P.git
 ```
 
-2. After you have installed Node.js in the above prerequisites.In the ./Sky-P2P directory, install dependencies for both frontend and backend:
+2. After you have installed Node.js in the above prerequisites. In the ./Sky-P2P directory, install dependencies for both frontend and backend:
 ```
 npm inst
 ```
