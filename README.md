@@ -34,7 +34,7 @@ git clone https://github.com/SQU3AKERS/Sky-P2P.git
 npm inst
 ```
 
-3. After you have installed MySQL, Ganache, and Truffle in the above prerequisites. In the ./Sky-P2P directory, set up the MySQL database:
+3. After you have installed MySQL, Ganache, and Truffle in the above prerequisites. In the ./Sky-P2P directory, set up the database and smart contracts:
 ```
 npm init
 ```
