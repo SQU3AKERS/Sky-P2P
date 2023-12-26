@@ -7,10 +7,12 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && node server.js",
     "client": "cd frontend && npm start",
-    "install": "concurrently \"npm run frontinstall\" \"npm run backinstall\"",
+    "inst": "concurrently \"npm run frontinstall\" \"npm run backinstall\"",
     "backinstall": "cd backend && npm install",
     "frontinstall": "cd frontend && npm install",
-    "init-db": "cd backend && node initializeDatabase.js"
+    "init": "concurrently \"npm run init-db\" \"npm run init-tf\"",
+    "init-db": "cd backend && node initializeDatabase.js",
+    "init-tf": "cd backend && truffle compile --reset && truffle migrate --network development"
   },
   "repository": {
     "type": "git",

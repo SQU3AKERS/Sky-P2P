@@ -39,7 +39,6 @@ useEffect(() => {
           <p>Interest Rate: {contract.interestRate}%</p>
           <p>Start Date: {contract.startDate}</p>
           <p>End Date: {contract.endDate}</p>
-          <p>Active?: {contract.isActive ? 'No' : 'Yes'}</p>
         </div>
       ))}
     </div>

@@ -4,32 +4,49 @@ import getEthereumAddress from '../../utils/getEthereumAddress';
 
 function LenderActiveContractMarketplace() {
     const session = useContext(SessionContext);
-    const [contracts, setContracts] = useState([]);
+    const [filteredContracts, setFilteredContracts] = useState([]);
     const [selectedContract, setSelectedContract] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
     useEffect(() => {
-      const fetchContracts = async () => {
-        // Fetch contracts from the blockchain via your backend
-        const response = await fetch('http://localhost:3001/api/contract/blockchain/allContracts');
-        const blockchainContracts = await response.json();
-  
-        // For each contract, fetch user details from your backend
-        const contractsWithUserDetails = await Promise.all(blockchainContracts.map(async contract => {
-          const userResponse = await fetch(`http://localhost:3001/api/contract/user-detail/${contract.borrowerId}`);
-          const userData = await userResponse.json();
-          return { ...contract, borrowerName: `${userData.FirstName} ${userData.LastName}` };
-        }));
-        setContracts(contractsWithUserDetails);
-        console.log('Contract Stuff:', contractsWithUserDetails);
-      };
-  
-      fetchContracts();
+        const fetchContracts = async () => {
+            console.log('Fetching contracts...');
+            // Fetch BlockIds from LenderPortfolio
+            console.log('Fetching BlockIds from LenderPortfolio...');
+            const lenderPortfolioResponse = await fetch('http://localhost:3001/api/transaction/allDBResults');
+            const lenderPortfolioBlockIds = await lenderPortfolioResponse.json();
+            console.log('LenderPortfolio BlockIds:', lenderPortfolioBlockIds);
+        
+            // Fetch contracts from the blockchain
+            console.log('Fetching contracts from the blockchain...');
+            const response = await fetch('http://localhost:3001/api/contract/blockchain/allContracts');
+            const blockchainContracts = await response.json();
+        
+            console.log('Processing each contract for user details...');
+            // Fetch user details for each contract
+            const contractsWithUserDetails = await Promise.all(blockchainContracts.map(async contract => {
+                console.log(`Fetching user details for contract ID: ${contract.id}`);
+                const userResponse = await fetch(`http://localhost:3001/api/contract/user-detail/${contract.borrowerId}`);
+                const userData = await userResponse.json();
+                return { ...contract, borrowerName: `${userData.FirstName} ${userData.LastName}` };
+            }));
+        
+            // Filter out contracts that exist in LenderPortfolio
+            console.log('Filtering out contracts already present in LenderPortfolio...');
+            const filteredContracts = contractsWithUserDetails.filter(contract => 
+                !lenderPortfolioBlockIds.includes(contract.id));
+        
+            console.log('Final list of contracts to display:', filteredContracts);
+            setFilteredContracts(filteredContracts);
+        };
+        
+        fetchContracts();        
+        
     }, []);
 
-    const handleContractClick = (contract) => {
-        setSelectedContract(contract);
+    const handleContractClick = (filteredContracts) => {
+        setSelectedContract(filteredContracts);
         setShowModal(true);
     };
 
@@ -42,7 +59,6 @@ function LenderActiveContractMarketplace() {
         setShowConfirmationModal(false);
         handleSendMoney();
     };
-
 
     const handleSendMoney = async () => {
         try {
@@ -81,11 +97,11 @@ function LenderActiveContractMarketplace() {
 
     return (
         <div className="contracts-container">
-            {contracts.map((contract, index) => (
-                <div key={index} className="contract-box" onClick={() => handleContractClick(contract)}>
+            {filteredContracts.map((filteredContracts, index) => (
+                <div key={index} className="contract-box" onClick={() => handleContractClick(filteredContracts)}>
                     <h3>Contract {index + 1}</h3>
-                    <p>Loan Amount: RM {contract.loanAmount}.00</p>
-                    <p>Interest Rate: {contract.interestRate}%</p>
+                    <p>Loan Amount: RM {filteredContracts.loanAmount}.00</p>
+                    <p>Interest Rate: {filteredContracts.interestRate}%</p>
                 </div>
             ))}
 
