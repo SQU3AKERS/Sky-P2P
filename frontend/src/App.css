@@ -424,32 +424,83 @@
   background-color: #3700B3; /* Darker shade for hover effect */
 }
 
+/* Container for all contracts */
+.contracts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px;
+}
+
+/* Individual contract box styling */
+.contract-box {
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.contract-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for contracts based on their status */
+.contract-box.active {
+  background-color: #f0f0f0;
+}
+
+.contract-box.earning {
+  background-color: #ffff99;
+}
+
+.contract-box.completed {
+  background-color: #ccffcc;
+}
+
+/* Modal window styling */
 .modal {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
+  justify-content: center;
 }
 
 .modal-content {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 70%;
   max-width: 500px;
+  width: 100%;
 }
 
+/* Close button in modal */
 .close {
   float: right;
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
+}
+
+/* Button styles inside the modal */
+.modal-content button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
 }
 
 .contract-box {

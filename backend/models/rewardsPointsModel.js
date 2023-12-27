@@ -8,11 +8,10 @@ RewardsPoints.init({
   RewardsID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   UserID: { type: DataTypes.INTEGER, allowNull: false },
   Points: { type: DataTypes.INTEGER, allowNull: false },
-  EarnedDate: { type: DataTypes.DATE, allowNull: false },
-  Description: { type: DataTypes.STRING }
+  AcquiredDate: { type: DataTypes.DATE, allowNull: false },
 }, { sequelize, modelName: 'RewardsPoints', timestamps: false, tableName: 'RewardsPoints' });
 
 // Define relationships
 RewardsPoints.belongsTo(User, { foreignKey: 'UserID' });
 
-module.exports = { User, RewardsPoints };
+module.exports = RewardsPoints;

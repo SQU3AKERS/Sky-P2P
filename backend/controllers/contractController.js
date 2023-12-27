@@ -11,29 +11,29 @@ const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 const contractController = {};
 
-contractController.createContract = async (contractData, senderAddress) => {
-const { loanAmount, interestRate, startDate, borrowerId } = contractData;
-console.log('Received contract data:', contractData);
-console.log('Loan Amount:', loanAmount);
-console.log('Interest Rate:', interestRate);
-console.log('Start Date:', startDate);
-console.log('Borrower ID:', borrowerId);
-console.log('ContractAddress:', contractAddress);
-console.log('SenderAddress:', contractData.senderAddress);
+  contractController.createContract = async (contractData, senderAddress) => {
+  const { loanAmount, interestRate, startDate, borrowerId } = contractData;
+  console.log('Received contract data:', contractData);
+  console.log('Loan Amount:', loanAmount);
+  console.log('Interest Rate:', interestRate);
+  console.log('Start Date:', startDate);
+  console.log('Borrower ID:', borrowerId);
+  console.log('ContractAddress:', contractAddress);
+  console.log('SenderAddress:', contractData.senderAddress);
 
-// Convert startDate from 'YYYY-MM-DD' to Unix timestamp
-const startDateTimestamp = new Date(startDate).getTime() / 1000;
-    try {
-        const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
-        const gas = await createContractMethod.estimateGas({ from: senderAddress });
-        const result = await createContractMethod.send({ from: contractData.senderAddress, gas: gas * 3 });
-        console.log('Contract created:', result);
-        return result;
-    } catch (error) {
-        console.error('Error creating contract:', error);
-        throw error;
-    }
-};
+  // Convert startDate from 'YYYY-MM-DD' to Unix timestamp
+  const startDateTimestamp = new Date(startDate).getTime() / 1000;
+      try {
+          const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
+          const gas = await createContractMethod.estimateGas({ from: senderAddress });
+          const result = await createContractMethod.send({ from: contractData.senderAddress, gas: gas * 3 });
+          console.log('Contract created:', result);
+          return result;
+      } catch (error) {
+          console.error('Error creating contract:', error);
+          throw error;
+      }
+  };
 
 contractController.getContractDetails = async (contractId) => {
     try {
@@ -100,7 +100,8 @@ contractController.getUserDetails = async (userId) => {
       throw error;
   }
 };
-  
+
+// DEPRECATED
 contractController.updateContract = async (contractId, updateData, senderAddress) => {
     try {
       const { loanAmount, interestRate } = updateData;
@@ -115,6 +116,7 @@ contractController.updateContract = async (contractId, updateData, senderAddress
     }
   };
 
+  // Future enhancement
   contractController.invalidateContract = async (contractId, senderAddress) => {
     try {
       const invalidateContractMethod = contract.methods.invalidateContract(contractId);
