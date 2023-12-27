@@ -108,4 +108,48 @@ const paymentController = {};
         }
     };
 
+    // List the 20 most recently uploaded contracts regardless of the user
+    paymentController.listAllContracts = async () => {
+    try {
+        const allContracts = await paymentContract.methods.getAllPayments().call();
+  
+        // Check if allContracts is not an array or is empty
+        if (!Array.isArray(allContracts) || allContracts.length === 0) {
+          console.log('No contracts found.');
+          return []; // Return an empty array if no contracts
+        }
+  
+        const processedContracts = allContracts.map(paymentContract => ({
+          ...paymentContract,
+          paymentDate: new Date(paymentContract.paymentDate * 1000).toLocaleDateString(),
+        }));
+  
+        // Check if there are fewer than 20 contracts
+        const recentContracts = processedContracts.length <= 20 ? processedContracts : processedContracts.slice(-20);
+        console.log('Recent Contracts:', recentContracts);
+        return recentContracts;
+    } catch (error) {
+        console.error('Error listing all contracts:', error);
+        throw error;
+    }
+  };
+
+  paymentController.getUserDetailsByBorrowerId = async (borrowerId) => {
+    try {
+        console.log(`Fetching user details for borrowerId: ${borrowerId}`);
+
+        const user = await Users.findOne({ where: { UserID: borrowerId } });
+        if (!user) {
+            console.log(`No user found for borrowerId: ${borrowerId}`);
+            return null;
+        }
+
+        console.log(`User found: ${user.FirstName} ${user.LastName}`);
+        return { FirstName: user.FirstName, LastName: user.LastName };
+    } catch (error) {
+        console.error(`Error fetching user details for borrowerId: ${borrowerId}:`, error);
+        throw error;
+    }
+};
+
 module.exports = paymentController;

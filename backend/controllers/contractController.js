@@ -69,6 +69,13 @@ contractController.listUserContracts = async (borrowerId) => {
 contractController.listAllContracts = async () => {
   try {
       const allContracts = await contract.methods.getAllContracts().call();
+
+      // Check if allContracts is not an array or is empty
+      if (!Array.isArray(allContracts) || allContracts.length === 0) {
+        console.log('No contracts found.');
+        return []; // Return an empty array if no contracts
+      }
+
       const processedContracts = allContracts.map(contract => ({
         ...contract,
         startDate: new Date(contract.startDate * 1000).toLocaleDateString(),

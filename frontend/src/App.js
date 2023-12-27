@@ -8,6 +8,9 @@ import LoginComponent from './components/LoginComponent';
 import BorrowerActiveContractCreate from './components/borrower/BorrowerActiveContractCreate';
 import BorrowerActiveContractUser from './components/borrower/BorrowerActiveContractUser';
 import BlockchainContractList from './components/BlockchainContractList';
+import BlockchainTransactionList from './components/BlockchainTransactionList';
+import BlockchainPaymentList from './components/BlockchainPaymentList';
+import BlockchainCreditScoreList from './components/BlockchainCreditScoreList';
 import LenderActiveContractMarketplace from './components/lender/LenderActiveContractMarketplace';
 import "slick-carousel/slick/slick-theme.css";
 
@@ -23,6 +26,9 @@ function App() {
               <Route path="/borrower/BorrowerActiveContractCreate" element={<BorrowerActiveContractCreate />} />
               <Route path="/borrower/BorrowerActiveContractUser" element={<BorrowerActiveContractUser />} />
               <Route path="/BlockchainContractList" element={<BlockchainContractList />} />
+              <Route path="/BlockchainTransactionList" element={<BlockchainTransactionList />} />
+              <Route path="/BlockchainPaymentList" element={<BlockchainPaymentList />} />
+              <Route path="/BlockchainCreditScoreList" element={<BlockchainCreditScoreList />} />
               <Route path="/lender/LenderActiveContractMarketplace" element={<LenderActiveContractMarketplace />} />
             </Routes>
           <Footer />

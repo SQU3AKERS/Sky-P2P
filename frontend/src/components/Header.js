@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SessionContext from '../contexts/SessionContext';
 
 const Header = () => {
   const { sessionData, logout } = useContext(SessionContext);
   console.log('Session Data in Header:', sessionData);
+
+  // useEffect to check sessionData
+  useEffect(() => {
+    // Check if sessionData is null and the current URL is not the homepage
+    if (sessionData === null && window.location.href !== "http://localhost:3000/") {
+      window.location.href = "http://localhost:3000/";
+    }
+  }, [sessionData]); // Dependency on sessionData
 
   const userType = sessionData && sessionData.userType ? sessionData.userType : null;
   console.log('User Type:', userType);
@@ -76,6 +84,7 @@ const Header = () => {
           <div className="dropdown-content">
             <Link to="/BlockchainContractList">Contracts</Link>
             <Link to="/BlockchainTransactionList">Transactions</Link>
+            <Link to="/BlockchainPaymentList">Payments</Link>
             <Link to="/BlockchainCreditScoreList">Credit Scores</Link>
             </div>
           </div>

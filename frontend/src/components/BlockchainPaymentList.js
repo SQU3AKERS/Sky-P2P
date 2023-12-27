@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-function BlockchainTransactionList() {
+function BlockchainPaymentList() {
     const [contracts, setContracts] = useState([]);
   
     useEffect(() => {
       const fetchContracts = async () => {
         // Fetch contracts from the blockchain via your backend
-        const response = await fetch('http://localhost:3001/api/contract/blockchain/allContracts');
+        const response = await fetch('http://localhost:3001/api/payment/blockchain/allContracts');
         const blockchainContracts = await response.json();
 
         // For each contract, fetch user details from your backend
-        const contractsWithUserDetails = await Promise.all(blockchainContracts.map(async contract => {
-          const userResponse = await fetch(`http://localhost:3001/api/contract/user-detail/${contract.borrowerId}`);
+        const contractsWithUserDetails = await Promise.all(blockchainContracts.map(async paymentContract => {
+          const userResponse = await fetch(`http://localhost:3001/api/payment/user-detail/${paymentContract.borrowerId}`);
           const userData = await userResponse.json();
-          return { ...contract, borrowerName: `${userData.FirstName} ${userData.LastName}` };
+          return { ...paymentContract, borrowerName: `${userData.FirstName} ${userData.LastName}` };
         }));
-  
+
         setContracts(contractsWithUserDetails);
       };
   
@@ -41,4 +41,4 @@ function BlockchainTransactionList() {
   );
 }
 
-export default BlockchainTransactionList;
+export default BlockchainPaymentList;
