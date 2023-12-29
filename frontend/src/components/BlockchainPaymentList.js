@@ -30,11 +30,10 @@ function BlockchainPaymentList() {
           {/*<p>Contract ID in Network: <br></br>{contract.id}</p>
           <p>Current Block Number in Network: <br></br>{contract.blockNumber}</p>*/}
           <p>Borrower: <br></br>{contract.borrowerName}</p>
-          <p>Start Date: <br></br>{contract.startDate}</p>
-          <p>End Date: <br></br>{contract.endDate}</p>
+          <p>Contract Block ID: <br></br>{contract.contractBlockId}</p>
+          <p>Payment Amount: <br></br>RM {contract.paymentAmount}.00</p>
+          <p>Payment Date: <br></br>{contract.paymentDate}</p>
           <p>Previous Block Hash in Network: <br></br>{contract.blockHash}</p>
-          {/*<p>Loan Amount: <br></br>{contract.loanAmount}</p>
-          <p>Interest Rate: <br></br>{contract.interestRate}%</p>*/}
         </div>
       ))}
     </div>

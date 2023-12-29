@@ -36,7 +36,6 @@ const Header = () => {
               <div className="dropdown-content">
                 <Link to="/borrower/BorrowerActiveContractUser">My Contracts</Link>
                 <Link to="/borrower/BorrowerActiveContractCreate">Create Contract</Link>
-                <Link to="/borrower/BorrowerActiveContractPay">Pay Contract</Link>
               </div>
             </div>
             <div className="dropdown">

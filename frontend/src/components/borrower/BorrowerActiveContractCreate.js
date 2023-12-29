@@ -5,8 +5,10 @@ import getEthereumAddress from '../../utils/getEthereumAddress';
 
 function BorrowerActiveContractCreate() {
   const session = useContext(SessionContext);
+  // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split('T')[0];
   console.log('SessionContext in Create:', session);
-  const [contractData, setContractData] = useState({ /* initial state */ });
+  const [contractData, setContractData] = useState();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,6 +25,7 @@ function BorrowerActiveContractCreate() {
     alert('Please enter a valid interest rate.');
     return;
     }
+    
     if (!contractData.startDate) {
     alert('Please enter a start date.');
     return;
@@ -59,7 +62,15 @@ function BorrowerActiveContractCreate() {
     </div>
     <div className="form-group">
         <label htmlFor="startDate">Start Date</label>
-        <input type="date" id="startDate" name="startDate" required onChange={handleChange} />
+        <input 
+          type="date" 
+          id="startDate" 
+          name="startDate" 
+          required 
+          onChange={handleChange} 
+          value={today} // Set the value to today's date
+          disabled // Disable the input
+        />
     </div>
     <button type="submit" className="submit-btn">Create Contract</button>
     </form>

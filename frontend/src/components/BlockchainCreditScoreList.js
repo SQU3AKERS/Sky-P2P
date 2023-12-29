@@ -27,14 +27,10 @@ function BlockchainContractList() {
       {contracts.map((contract, index) => (
         <div key={index} className="contract-box">
           <h3>Contract {index + 1}</h3>
-          {/*<p>Contract ID in Network: <br></br>{contract.id}</p>
-          <p>Current Block Number in Network: <br></br>{contract.blockNumber}</p>*/}
           <p>Borrower: <br></br>{contract.borrowerName}</p>
-          <p>Borrower's Added Score: <br></br>{contract.score}</p>
+          <p>Borrower's Added Score: <br></br>{contract.score} point(s)</p>
           <p>Earned Score Date: <br></br>{contract.scoreDate}</p>
           <p>Previous Block Hash in Network: <br></br>{contract.blockHash}</p>
-          {/*<p>Loan Amount: <br></br>{contract.loanAmount}</p>
-          <p>Interest Rate: <br></br>{contract.interestRate}%</p>*/}
         </div>
       ))}
     </div>
