@@ -30,8 +30,8 @@ function BlockchainContractList() {
           {/*<p>Contract ID in Network: <br></br>{contract.id}</p>
           <p>Current Block Number in Network: <br></br>{contract.blockNumber}</p>*/}
           <p>Borrower: <br></br>{contract.borrowerName}</p>
-          <p>Start Date: <br></br>{contract.startDate}</p>
-          <p>End Date: <br></br>{contract.endDate}</p>
+          <p>Borrower's Added Score: <br></br>{contract.score}</p>
+          <p>Earned Score Date: <br></br>{contract.scoreDate}</p>
           <p>Previous Block Hash in Network: <br></br>{contract.blockHash}</p>
           {/*<p>Loan Amount: <br></br>{contract.loanAmount}</p>
           <p>Interest Rate: <br></br>{contract.interestRate}%</p>*/}
