@@ -81,6 +81,11 @@ const paymentController = {};
                 Points: points,
                 AcquiredDate: formattedTransactionDate,
             });
+
+            await LenderPortfolio.update({
+                 Status: 'Completed' },
+                { where: { BlockID: contractId } 
+            });
     
             console.log(`Payment processed and blockchain updated for Borrower ID: ${borrowerId}`);
         } catch (error) {
@@ -89,21 +94,21 @@ const paymentController = {};
         }
     };
 
-    paymentController.fetchLenderPortfolio = async (lenderId) => {
+    paymentController.fetchLenderPortfolio = async () => {
         try {
-            console.log(`Fetching Lender Portfolio for Lender ID: ${lenderId}`);
+            console.log(`Fetching Lender Portfolio`);
             const portfolioData = await LenderPortfolio.findAll({
-                where: { LenderID: lenderId },
+                // where: { LenderID: lenderId },
                 include: [{
                     model: Users,
                     attributes: { exclude: ['PasswordHash'] }
                 }]
             });
 
-            console.log(`Fetched ${portfolioData.length} portfolio entries for Lender ID: ${lenderId}`);
+            console.log(`Fetched ${portfolioData.length} portfolio entries`);
             return portfolioData;
         } catch (error) {
-            console.error(`Error in fetching Lender Portfolio for Lender ID: ${lenderId}:`, error);
+            console.error(`Error in fetching Lender Portfolio:`, error);
             throw error;
         }
     };

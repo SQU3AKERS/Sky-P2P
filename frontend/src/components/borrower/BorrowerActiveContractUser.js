@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SessionContext } from '../../contexts/SessionContext';
 import getEthereumAddress from '../../utils/getEthereumAddress';
 
 function BorrowerActiveContractUser() {
     const session = useContext(SessionContext);
+    const navigate = useNavigate();
     const [userContracts, setUserContracts] = useState([]);
     const [selectedContract, setSelectedContract] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -18,16 +20,30 @@ function BorrowerActiveContractUser() {
             if (Array.isArray(contracts)) {
                 const lenderPortfolioResponse = await fetch('http://localhost:3001/api/payment/fetchLenderPortfolio/');
                 const lenderPortfolios = await lenderPortfolioResponse.json();
+                console.log('Lender Portfolios:', lenderPortfolios);
     
                 const updatedContracts = contracts.map(contract => {
-                    const portfolio = lenderPortfolios.find(p => p.BlockID === contract.id);
-                    return { ...contract, status: portfolio ? portfolio.Status : 'Active' };
+                    console.log('Contract ID:', contract.id);
+                    const portfolio = lenderPortfolios.find(p => p.BlockID.trim() === contract.id.trim());
+
+                    let contractStatus;
+                        if (portfolio) {
+                            contractStatus = portfolio.Status === 'Earning' ? 'Active' : portfolio.Status;
+                        } else {
+                            contractStatus = 'No Funding';
+                        }
+
+                    console.log(`Contract ID: ${contract.id} (type: ${typeof contract.id}), Matching Portfolio:`, portfolio);
+                    lenderPortfolios.forEach(p => {
+                        console.log(`Comparing Portfolio BlockID: '${p.BlockID}' (type: ${typeof p.BlockID}) with Contract ID: '${contract.id}' (type: ${typeof contract.id})`);
+                    });
+                    
+                    return { ...contract, status: contractStatus };
                 });
     
                 setUserContracts(updatedContracts);
             } else {
                 console.error('Expected an array, received:', contracts);
-                // Handle the error appropriately
             }
         };
     
@@ -67,14 +83,19 @@ function BorrowerActiveContractUser() {
           });
   
           if (response.ok) {
-              const result = await response.json();
-              // Refresh the page if payment is successful
-              window.location.reload();
-              console.log('Payment successful:', result);
-          } else {
-              // Handle errors
-              console.error('Payment failed:', response.status);
-          }
+            if (response.headers.get("content-type")?.includes("application/json")) {
+                const result = await response.json();
+                console.log('Payment successful:', result);
+                navigate('/borrower/BorrowerActiveContractUser');
+                window.location.reload();
+            } else {
+                console.log('Payment successful, no JSON response');
+                navigate('/borrower/BorrowerActiveContractUser');
+                window.location.reload();
+            }
+        } else {
+            console.error('Payment failed:', response.status);
+        }
       } catch (error) {
           console.error('Error during payment:', error);
       } finally {
@@ -105,7 +126,7 @@ function BorrowerActiveContractUser() {
                         <p><strong>End Date:</strong> {selectedContract.endDate}</p>
                         <p><strong>Full Amount to Repay:</strong> RM {Number(selectedContract.loanAmount * (1 + selectedContract.interestRate / 100)).toFixed(2)}</p>
                         <p><strong>Status:</strong> {selectedContract.status}</p>
-                        {selectedContract.status !== 'Completed' && (
+                        {selectedContract.status !== 'Completed' && selectedContract.status !== 'No Funding' && (
                             <button onClick={handlePayContract}>Pay Contract</button>
                         )}
                         <br></br>
