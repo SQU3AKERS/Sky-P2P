@@ -8,7 +8,8 @@ function BorrowerActiveContractCreate() {
   // Get today's date in YYYY-MM-DD format
   const today = new Date().toISOString().split('T')[0];
   console.log('SessionContext in Create:', session);
-  const [contractData, setContractData] = useState();
+
+  const [contractData, setContractData] = useState({ startDate: today });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -44,9 +45,13 @@ function BorrowerActiveContractCreate() {
       if (response.ok) {
         navigate('/borrower/BorrowerMainpage');
         alert('Contract created successfully!');
+        } else {
+          const result = await response.json();
+          alert(result.message); // Display the error message from the server
       }
     } catch (error) {
       console.error('Contract creation failed:', error);
+      alert('An error occurred while creating the contract.', error);
     }
   };
 
@@ -68,7 +73,7 @@ function BorrowerActiveContractCreate() {
           name="startDate" 
           required 
           onChange={handleChange} 
-          value={today} // Set the value to today's date
+          value={contractData.startDate} // Set the value to today's date
           disabled // Disable the input
         />
     </div>

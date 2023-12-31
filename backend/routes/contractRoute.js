@@ -7,7 +7,11 @@ router.post('/createContract', async (req, res) => {
     try {
         console.log('Creating a new contract:', req.body);
         const result = await contractController.createContract(req.body);
-        res.status(200).json(result);
+        if (result.error) {
+            res.status(400).json({ message: result.error });
+        } else {
+            res.status(200).json(result);
+        }
     } catch (error) {
         console.error('Error creating contract:', error);
         res.status(500).send(error.toString());

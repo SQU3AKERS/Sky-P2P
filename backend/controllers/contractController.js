@@ -2,37 +2,52 @@ const Web3 = require('web3');
 const getContractAddress = require('../utils/getContractAddress');
 const Users = require('../models/userModel'); 
 const contractABI = require('../build/contracts/BorrowerContract.json').abi;
+const paymentContractABI = require('../build/contracts/PaymentContract.json').abi;
 
 console.log(process.env.BLOCKCHAIN_NODE_URL);
 
 const web3 = new Web3(process.env.BLOCKCHAIN_NODE_URL);
 const contractAddress = getContractAddress('BorrowerContract');
 const contract = new web3.eth.Contract(contractABI, contractAddress);
+const paymentContractAddress = getContractAddress('PaymentContract');
+const paymentContract = new web3.eth.Contract(paymentContractABI, paymentContractAddress);
 
 const contractController = {};
 
-  contractController.createContract = async (contractData, senderAddress) => {
-  const { loanAmount, interestRate, startDate, borrowerId } = contractData;
-  console.log('Received contract data:', contractData);
-  console.log('Loan Amount:', loanAmount);
-  console.log('Interest Rate:', interestRate);
-  console.log('Start Date:', startDate);
-  console.log('Borrower ID:', borrowerId);
-  console.log('ContractAddress:', contractAddress);
-  console.log('SenderAddress:', contractData.senderAddress);
+  contractController.createContract = async (contractData, res) => {
+    try {
+      const borrowerId = contractData.borrowerId;
+      const userContracts = await contractController.listUserContracts(borrowerId);
+      const userPayments = await contractController.getPaymentsForBorrower(borrowerId);
 
-  // Convert startDate from 'YYYY-MM-DD' to Unix timestamp
-  const startDateTimestamp = new Date(startDate).getTime() / 1000;
-      try {
-          const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
-          const gas = await createContractMethod.estimateGas({ from: senderAddress });
-          const result = await createContractMethod.send({ from: contractData.senderAddress, gas: gas * 3 });
-          console.log('Contract created:', result);
-          return result;
-      } catch (error) {
-          console.error('Error creating contract:', error);
-          throw error;
+      // Calculate the difference between contracts and payments
+      const activeContracts = userContracts.length - userPayments.length;
+
+      // Check if the borrower has less than 5 active contracts
+      if (activeContracts < 5) {
+        const { loanAmount, interestRate, startDate, borrowerId } = contractData;
+        console.log('Received contract data:', contractData);
+        console.log('SenderAddress:', contractData.senderAddress);
+
+        // Convert startDate from 'YYYY-MM-DD' to Unix timestamp
+        const startDateTimestamp = new Date(startDate).getTime() / 1000;
+          try {
+              const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
+              const gas = await createContractMethod.estimateGas({ from: senderAddress });
+              const result = await createContractMethod.send({ from: contractData.senderAddress, gas: gas * 3 });
+              console.log('Contract created:', result);
+              return { success: true, ...result };
+          } catch (error) {
+              console.error('Error creating contract:', error);
+              throw error;
+          }
+        } else {
+          return { error: 'Maximum number of active contracts reached' };
       }
+    } catch (error) {
+      console.error('Error creating contract:', error);
+      throw error;
+    }
   };
 
 contractController.getContractDetails = async (contractId) => {
@@ -45,7 +60,17 @@ contractController.getContractDetails = async (contractId) => {
       console.error('Error retrieving contract details:', error);
       throw error;
     }
-  };  
+  };
+
+  contractController.getPaymentsForBorrower = async (borrowerId) => {
+    try {
+        const payments = await paymentContract.methods.getPaymentsForBorrowerId(borrowerId).call();
+        return payments;
+    } catch (error) {
+        console.error('Error retrieving payments:', error);
+        throw error;
+    }
+};
 
 // List contracts based on the borrowerId within the contract
 contractController.listUserContracts = async (borrowerId) => {
