@@ -98,7 +98,6 @@ const paymentController = {};
         try {
             console.log(`Fetching Lender Portfolio`);
             const portfolioData = await LenderPortfolio.findAll({
-                // where: { LenderID: lenderId },
                 include: [{
                     model: Users,
                     attributes: { exclude: ['PasswordHash'] }
