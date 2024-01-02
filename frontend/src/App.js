@@ -12,6 +12,7 @@ import BlockchainTransactionList from './components/BlockchainTransactionList';
 import BlockchainPaymentList from './components/BlockchainPaymentList';
 import BlockchainCreditScoreList from './components/BlockchainCreditScoreList';
 import LenderActiveContractMarketplace from './components/lender/LenderActiveContractMarketplace';
+import UserUpdateProfile from './components/UserUpdateProfile';
 import "slick-carousel/slick/slick-theme.css";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
               <Route path="/BlockchainPaymentList" element={<BlockchainPaymentList />} />
               <Route path="/BlockchainCreditScoreList" element={<BlockchainCreditScoreList />} />
               <Route path="/lender/LenderActiveContractMarketplace" element={<LenderActiveContractMarketplace />} />
+              <Route path="/UserUpdateProfile" element={<UserUpdateProfile />} />
             </Routes>
           <Footer />
         </div>

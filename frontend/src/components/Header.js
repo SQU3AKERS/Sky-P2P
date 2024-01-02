@@ -38,14 +38,14 @@ const Header = () => {
                 <Link to="/borrower/BorrowerActiveContractCreate">Create Contract</Link>
               </div>
             </div>
-            <div className="dropdown">
+            {/*<div className="dropdown">
               <button className="dropbtn">Rewards +</button>
               <div className="dropdown-content">
                 <Link to="/borrower/BorrowerRewardsMarketplace">Rewards Marketplace</Link>
                 <Link to="/borrower/BorrowerRewardsList">My Rewards</Link>
               </div>
-            </div>
-            <Link to="/borrower/BorrowerUpdateProfile">Profile</Link>
+            </div>*/}
+            <Link to="/UserUpdateProfile">Profile</Link>
           </>
         );
       case 'Lender':
@@ -59,7 +59,7 @@ const Header = () => {
                 <Link to="/lender/LenderPortfolio">My Portfolio</Link>
               </div>
             </div>
-            <Link to="/lender/LenderProfileUpdate">Profile</Link>
+            <Link to="/UserUpdateProfile">Profile</Link>
           </>
         );
       default:

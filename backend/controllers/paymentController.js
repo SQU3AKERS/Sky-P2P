@@ -1,7 +1,8 @@
 const Web3 = require('web3');
 const getContractAddress = require('../utils/getContractAddress');
 const LenderPortfolio = require('../models/lenderPortfolioModel');
-const RewardsPoints = require('../models/rewardsPointsModel');
+// Temporarily removed due to not being required, can be future enhancement.
+// const RewardsPoints = require('../models/rewardsPointsModel');
 const Users = require('../models/userModel');
 const paymentContractABI = require('../build/contracts/PaymentContract.json').abi;
 const creditScoreContractABI = require('../build/contracts/CreditScoreContract.json').abi;
@@ -75,12 +76,12 @@ const paymentController = {};
             // Format the Date to YYYY-MM-DD
             const formattedTransactionDate = transactionDateObject.toISOString().split('T')[0];
 
-            // Store the rewards points in the database
-            await RewardsPoints.create({
-                UserID: borrowerId,
-                Points: points,
-                AcquiredDate: formattedTransactionDate,
-            });
+            // Store the rewards points in the database, TEMPORARILY DEPRECATED
+            // await RewardsPoints.create({
+            //    UserID: borrowerId,
+            //    Points: points,
+            //    AcquiredDate: formattedTransactionDate,
+            // });
 
             await LenderPortfolio.update({
                  Status: 'Completed' },

@@ -10,6 +10,7 @@ const contractRoute = require('./routes/contractRoute');
 const transactionRoute = require('./routes/transactionRoute');
 const paymentRoute = require('./routes/paymentRoute');
 const creditScoreRoute = require('./routes/creditScoreRoute');
+const profileRoute = require('./routes/profileRoute');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/contract', contractRoute);
 app.use('/api/transaction', transactionRoute);
 app.use('/api/payment', paymentRoute);
 app.use('/api/creditscore', creditScoreRoute);
+app.use('/api/profile', profileRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

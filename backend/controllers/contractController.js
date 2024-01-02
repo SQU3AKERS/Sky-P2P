@@ -33,7 +33,7 @@ const contractController = {};
         const startDateTimestamp = new Date(startDate).getTime() / 1000;
           try {
               const createContractMethod = contract.methods.createContract(borrowerId, loanAmount, interestRate, startDateTimestamp);
-              const gas = await createContractMethod.estimateGas({ from: senderAddress });
+              const gas = await createContractMethod.estimateGas({ from: contractData.senderAddress });
               const result = await createContractMethod.send({ from: contractData.senderAddress, gas: gas * 3 });
               console.log('Contract created:', result);
               return { success: true, ...result };
