@@ -43,10 +43,14 @@ const paymentController = {};
             console.log('Data Received in payContract:', data);
             const transactionDate = Math.floor(Date.now() / 1000); // Current timestamp in Unix
             console.log('Transaction date:', transactionDate);
+
+            // Round up payment amount
+            const paymentAmountInteger = Math.round(paymentAmount);
+            console.log('Payment amount rounded:', paymentAmountInteger);
     
             // Store the payment details in the blockchain
             console.log('Creating payment on blockchain...');
-            const createPaymentMethod = paymentContract.methods.createPayment(contractId, borrowerId, paymentAmount, transactionDate);
+            const createPaymentMethod = paymentContract.methods.createPayment(contractId, borrowerId, paymentAmountInteger, transactionDate);
             let gas = await createPaymentMethod.estimateGas({ from: senderAddress });
             await createPaymentMethod.send({ from: senderAddress, gas: gas * 3 });
     
@@ -62,7 +66,7 @@ const paymentController = {};
 
             // Calculate the credit score and rewards points
             console.log('Calculating credit score and rewards points...');
-            const { score, points } = calculateCreditScoreAndPoints(daysDiff);
+            const { score } = calculateCreditScoreAndPoints(daysDiff);
             console.log('Credit score and rewards points processed. Function completed successfully.');
     
             // Store the credit score in the blockchain
