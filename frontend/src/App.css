@@ -718,6 +718,43 @@
   font-size: 2em; /* Adjust the size as necessary */
 }
 
+/* User Main Menus */
+.user-main-menu {
+  display: grid;
+  grid-template-rows: auto auto; /* Defines two rows */
+  gap: 20px; /* Space between boxes */
+  padding: 5%; /* Padding around the grid */
+  margin: auto; /* Center the menu in the middle of the page */
+  max-width: 1200px; /* Maximum width of the menu */
+}
+
+.user-main-menu .menu-row {
+  display: grid;
+}
+
+.user-main-menu .menu-row.top {
+  grid-template-columns: repeat(3, 1fr); /* Three columns for the top row */
+}
+
+.user-main-menu .menu-row.bottom {
+  grid-template-columns: repeat(2, 1fr); /* Two columns for the bottom row */
+}
+
+.user-main-menu .menu-item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 150px; /* Fixed height for all items */
+}
+
+.welcome-message {
+  text-align: center;
+  font-size: 2em; /* Example size, adjust as needed */
+  margin-bottom: 20px; /* Space before the menu items */
+}
+
 @media (max-width: 768px) {
   .navbar-menu {
     display: none; /* Hide the navbar menu on small screens */
@@ -747,7 +784,12 @@
 
   .profile-settings-form .modal-content {
     width: 90%;
-}
+  }
+  
+  .user-main-menu .menu-row.top, 
+  .user-main-menu .menu-row.bottom {
+    grid-template-columns: 1fr; /* Stack items on smaller screens */
+  }
 };
 
 @keyframes App-logo-spin {

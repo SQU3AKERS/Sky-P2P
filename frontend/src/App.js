@@ -7,6 +7,7 @@ import AboutUs from './components/AboutUs';
 import HomePage from './components/HomePage';
 import RegisterComponent from './components/RegisterComponent';
 import LoginComponent from './components/LoginComponent';
+import BorrowerMainpage from './components/borrower/BorrowerMainpage';
 import BorrowerActiveContractCreate from './components/borrower/BorrowerActiveContractCreate';
 import BorrowerActiveContractUser from './components/borrower/BorrowerActiveContractUser';
 import BlockchainContractList from './components/BlockchainContractList';
@@ -28,6 +29,7 @@ function App() {
               <Route path="/login" element={<LoginComponent />} />
               <Route path="/support" element={<Support />} />
               <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/borrower/BorrowerMainpage" element={<BorrowerMainpage />} />
               <Route path="/borrower/BorrowerActiveContractCreate" element={<BorrowerActiveContractCreate />} />
               <Route path="/borrower/BorrowerActiveContractUser" element={<BorrowerActiveContractUser />} />
               <Route path="/BlockchainContractList" element={<BlockchainContractList />} />

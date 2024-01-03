@@ -11,6 +11,7 @@ const transactionRoute = require('./routes/transactionRoute');
 const paymentRoute = require('./routes/paymentRoute');
 const creditScoreRoute = require('./routes/creditScoreRoute');
 const profileRoute = require('./routes/profileRoute');
+const mainMenuRoute = require('./routes/mainMenuRoute');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/transaction', transactionRoute);
 app.use('/api/payment', paymentRoute);
 app.use('/api/creditscore', creditScoreRoute);
 app.use('/api/profile', profileRoute);
+app.use('/api/mainmenu', mainMenuRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
