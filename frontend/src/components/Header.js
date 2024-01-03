@@ -88,7 +88,7 @@ const Header = () => {
             </div>
           </div>
           {renderNavLinks()}
-          <Link to="/support">Support</Link>
+          <Link to="/Support">Support</Link>
         </div>
         {/* Right side of the navbar */}
         <div className="navbar-auth">

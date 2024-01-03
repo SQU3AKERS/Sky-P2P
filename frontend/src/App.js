@@ -2,6 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Support from './components/Support';
+import AboutUs from './components/AboutUs';
 import HomePage from './components/HomePage';
 import RegisterComponent from './components/RegisterComponent';
 import LoginComponent from './components/LoginComponent';
@@ -24,6 +26,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/register" element={<RegisterComponent />} />
               <Route path="/login" element={<LoginComponent />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/borrower/BorrowerActiveContractCreate" element={<BorrowerActiveContractCreate />} />
               <Route path="/borrower/BorrowerActiveContractUser" element={<BorrowerActiveContractUser />} />
               <Route path="/BlockchainContractList" element={<BlockchainContractList />} />

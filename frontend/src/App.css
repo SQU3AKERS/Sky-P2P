@@ -615,6 +615,109 @@
   text-decoration: none;
 }
 
+/* Support Page */
+.support-page-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.support-page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.support-page-description {
+  margin-bottom: 20px;
+}
+
+.support-page-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.support-page-input,
+.support-page-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.support-page-textarea {
+  min-height: 100px;
+}
+
+.support-page-button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.support-page-button:hover {
+  background-color: #0056b3;
+}
+
+.support-page-validation {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* About Us */
+.about-us {
+  text-align: center;
+  padding: 20px;
+}
+
+.about-us .business-info,
+.about-us .founder-info {
+  margin-bottom: 30px;
+}
+
+.about-us img {
+  width: 100%;
+  max-width: 300px; /* Adjust the size as necessary */
+  height: auto;
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+.about-us h1 {
+  color: #333;
+  font-size: 2.5em; /* Adjust the size as necessary */
+}
+
+.about-us p {
+  color: #666;
+  font-size: 1em; /* Adjust the size as necessary */
+  line-height: 1.6;
+  max-width: 600px; /* Adjust the width as necessary */
+  margin: 20px auto;
+}
+
+/* Additional styles for the founder section */
+.founder-info .founder-image {
+  border: 3px solid #333; /* Optional: for styled border */
+}
+
+.founder-info h2 {
+  color: #333;
+  font-size: 2em; /* Adjust the size as necessary */
+}
+
 @media (max-width: 768px) {
   .navbar-menu {
     display: none; /* Hide the navbar menu on small screens */
