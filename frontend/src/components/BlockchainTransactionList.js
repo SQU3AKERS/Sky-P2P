@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function BlockchainTransactionList() {
     const [contracts, setContracts] = useState([]);
-  
+
     useEffect(() => {
       const fetchContracts = async () => {
         // Fetch contracts from the blockchain via your backend
