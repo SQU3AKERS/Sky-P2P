@@ -14,7 +14,7 @@ const Footer = () => {
             Sky's P2P Lending Platform (registered with relevant authority) is building the financing infrastructure of tomorrow, working with great clients and continued technological development in the P2P lending industry. Interested to join our team? We'd love to hear from you.
           </p>
           <p>
-            I wonder if anyone bothers reading this area. I am trying to make it discreet and let the user feel that this is a professional website that has no flaws. Oh, you're still reading? I guess you can say that this is a rather odd easter egg. Remember to drink water and have a nice day!
+            I wonder if anyone bothers reading this area. I am trying to make it discreet and let the user feel that this is a professional website that has no flaws. Oh, you're still reading? I guess you can say that this is a rather odd easter egg. Remember to drink your water and have a nice day!
           </p>  
           <p>Terms of Use | Privacy Notice | Data Guidelines</p>
           <div className="social-links">
