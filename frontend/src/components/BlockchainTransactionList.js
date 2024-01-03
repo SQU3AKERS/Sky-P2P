@@ -5,22 +5,45 @@ function BlockchainTransactionList() {
 
     useEffect(() => {
       const fetchContracts = async () => {
-        // Fetch contracts from the blockchain via your backend
-        const response = await fetch('http://localhost:3001/api/contract/blockchain/allContracts');
-        const blockchainContracts = await response.json();
+        try {
+          // Fetch contracts from the blockchain via your backend
+          const response = await fetch('http://localhost:3001/api/transaction/blockchain/allTransactions');
+          const blockchainContracts = await response.json();
+          console.log('Blockchain Contract:', blockchainContracts);
+      
+          // Fetch all user details at once
+          const usersResponse = await fetch('http://localhost:3001/api/transaction/fetchAllUsers/');
+          console.log('Raw response from /fetchAllUsers/:', usersResponse); // Log the raw response
+            if (!usersResponse.ok) {
+              throw new Error(`HTTP error! status: ${usersResponse.status}`); // Check for HTTP errors
+            }
+          const users = await usersResponse.json();
+          console.log('Users data:', users)
+          const userMap = users.reduce((acc, user) => {
+            acc[user.UserID] = `${user.FirstName} ${user.LastName}`;
+            return acc;
+          }, {});
+      
+          // Map user details to each transaction contract
+          const contractsWithUserDetails = blockchainContracts.map(contract => {
+            return {
+              ...contract,
+              borrowerName: userMap[contract.borrowerId],
+              lenderName: userMap[contract.lenderId]
+            };
+          });
 
-        // For each contract, fetch user details from your backend
-        const contractsWithUserDetails = await Promise.all(blockchainContracts.map(async contract => {
-          const userResponse = await fetch(`http://localhost:3001/api/contract/user-detail/${contract.borrowerId}`);
-          const userData = await userResponse.json();
-          return { ...contract, borrowerName: `${userData.FirstName} ${userData.LastName}` };
-        }));
-  
         setContracts(contractsWithUserDetails);
+
+        } catch (error) {
+
+          console.error('Error in fetchContracts:', error);
+
+        }
       };
-  
+    
       fetchContracts();
-    }, []);
+    }, []);    
 
   return (
     <div className="contracts-container">
@@ -29,12 +52,12 @@ function BlockchainTransactionList() {
           <h3>Contract {index + 1}</h3>
           {/*<p>Contract ID in Network: <br></br>{contract.id}</p>
           <p>Current Block Number in Network: <br></br>{contract.blockNumber}</p>*/}
-          <p>Borrower: <br></br>{contract.borrowerName}</p>
-          <p>Start Date: <br></br>{contract.startDate}</p>
-          <p>End Date: <br></br>{contract.endDate}</p>
+          <p>From Lender: <br></br>{contract.lenderName}</p>
+          <p>To Borrower: <br></br>{contract.borrowerName}</p>
+          <p>Loan Amount: <br></br>RM {contract.amount}.00</p>
+          <p>Transaction Date: <br></br>{contract.transactionDate}</p>
           <p>Previous Block Hash in Network: <br></br>{contract.blockHash}</p>
-          {/*<p>Loan Amount: <br></br>{contract.loanAmount}</p>
-          <p>Interest Rate: <br></br>{contract.interestRate}%</p>*/}
+          {/*<p>Interest Rate: <br></br>{contract.interestRate}%</p>*/}
         </div>
       ))}
     </div>

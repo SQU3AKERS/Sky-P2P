@@ -118,7 +118,7 @@ contractController.listAllContracts = async () => {
   }
 };
 
-  // Function to get user details by UserID
+// Function to get user details by UserID
 contractController.getUserDetails = async (userId) => {
   try {
       const user = await Users.findOne({ where: { UserID: userId } });

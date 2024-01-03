@@ -1,4 +1,5 @@
 const LenderPortfolio = require('../models/lenderPortfolioModel');
+const Users = require('../models/userModel');
 const Web3 = require('web3');
 const getContractAddress = require('../utils/getContractAddress');
 const contractABI = require('../build/contracts/TransactionContract.json').abi;
@@ -66,6 +67,46 @@ transactionController.getAllDBBlockIds = async (req, res) => {
     } catch (error) {
         console.error('Error fetching BlockIds from LenderPortfolio:', error);
         res.status(500).send(error.toString());
+    }
+};
+
+// List the 20 most recently uploaded transaction contracts regardless of the user
+transactionController.listAllTransactions = async () => {
+    try {
+        const allContracts = await contract.methods.getAllTransactions().call();
+  
+        // Check if allContracts is not an array or is empty
+        if (!Array.isArray(allContracts) || allContracts.length === 0) {
+          console.log('No contracts found.');
+          return []; // Return an empty array if no contracts
+        }
+  
+        const processedContracts = allContracts.map(contract => ({
+          ...contract,
+          transactionDate: new Date(contract.transactionDate * 1000).toLocaleDateString(),
+        }));
+  
+        // Check if there are fewer than 20 contracts
+        const recentTransactions = processedContracts.length <= 20 ? processedContracts : processedContracts.slice(-20);
+        console.log('Recent Contracts:', recentTransactions);
+        return recentTransactions;
+    } catch (error) {
+        console.error('Error listing all contracts:', error);
+        throw error;
+    }
+  };
+
+transactionController.fetchAllUsers = async (req, res) => {
+    try {
+        const users = await Users.findAll({
+            attributes: ['UserID', 'FirstName', 'LastName']
+        });
+        console.log('Fetched Users:', users); // Log the fetched users
+        return users;
+    } catch (error) {
+        console.error('Failed to fetch users:', error);
+        console.log('Error details:', error); // Log the error details
+        return res.status(500).send(error.toString());
     }
 };
 
