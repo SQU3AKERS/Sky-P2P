@@ -1,9 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2024-01-04T12:53:15.364Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" version="22.1.16" etag="3fNRDzTz6gAyitsxjLkc" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-04T13:39:43.614Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="1kgSXlxslTVmCHcOcNO7" version="22.1.16" type="github">
   <diagram name="Page-1" id="TEoX_1rVG2kbIiYaBgTd">
-    <mxGraphModel>
+    <mxGraphModel dx="1727" dy="905" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YOeuPB1RbAu5UahvQaNl-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="80" width="840" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="YOeuPB1RbAu5UahvQaNl-2" value="Borrower" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=3;fontSize=20;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="90" y="190" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YOeuPB1RbAu5UahvQaNl-4" value="Lender" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=3;fontSize=20;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="90" y="490" width="30" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
