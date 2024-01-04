@@ -7,5 +7,4 @@ storage/ganache-logs
 storage/idea-generation
 
 # unused components and modules
-/DEPRECATED
 DEPRECATED/
