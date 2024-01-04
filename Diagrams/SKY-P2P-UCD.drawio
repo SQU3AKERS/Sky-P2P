@@ -1,81 +1,52 @@
-<mxfile host="app.diagrams.net" modified="2024-01-04T13:39:43.614Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="1kgSXlxslTVmCHcOcNO7" version="22.1.16" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-04T13:57:13.836Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="-3gqHRx5ynWBpk8Qx3Ic" version="22.1.16" type="github">
   <diagram name="Page-1" id="TEoX_1rVG2kbIiYaBgTd">
-        <mxGraphModel>
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <!-- Borrower -->
-                <mxCell id="2" value="Borrower" style="text;html=1;rounded=1;whiteSpace=wrap;fillColor=#dae8fc;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="50" width="100" height="60" as="geometry"/>
-                </mxCell>
-                <!-- Borrower's Actions -->
-                <!-- Register/Log In -->
-                <mxCell id="3" value="Register/Log In" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="30" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Create Loan Contracts -->
-                <mxCell id="4" value="Create Loan Contracts" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="90" width="140" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Receive Loan Funding -->
-                <mxCell id="5" value="Receive Loan Funding" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="150" width="130" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Repay Loan -->
-                <mxCell id="6" value="Repay Loan" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="210" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Loan Status -->
-                <mxCell id="7" value="View Loan Status" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="270" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Credit Score -->
-                <mxCell id="8" value="View Credit Score" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="330" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Update Profile -->
-                <mxCell id="9" value="Update Profile" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="390" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Blockchain List -->
-                <mxCell id="10" value="View Blockchain List" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="450" width="120" height="40" as="geometry"/>
-                </mxCell>
-
-                <!-- Lender -->
-                <mxCell id="11" value="Lender" style="text;html=1;rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="50" width="100" height="60" as="geometry"/>
-                </mxCell>
-                <!-- Lender's Actions -->
-                <!-- Register/Log In -->
-                <mxCell id="12" value="Register/Log In" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="30" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Loan Marketplace -->
-                <mxCell id="13" value="View Loan Marketplace" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="90" width="140" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Transfer Money -->
-                <mxCell id="14" value="Transfer Money" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="150" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Loan Contracts -->
-                <mxCell id="15" value="View Loan Contracts" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="210" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Receive Payments -->
-                <mxCell id="16" value="Receive Payments" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="270" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <!-- Update Profile -->
-                <mxCell id="17" value="Update Profile" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="330" width="100" height="40" as="geometry"/>
-                </mxCell>
-                <!-- View Blockchain List -->
-                <mxCell id="18" value="View Blockchain List" style="ellipse;html=1;aspect=fixed;whiteSpace=wrap;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="350" y="390" width="120" height="40" as="geometry"/>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+    <mxGraphModel dx="1219" dy="693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3" value="Register/Log In" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="200" y="30" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Create Loan Contracts" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="380" y="30" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Receive Loan Funding" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="490" y="90" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Repay Loan" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="335" y="100" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="View Loan Status" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="560" y="170" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="View Credit Score" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="320" y="170" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Update Profile" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="190" y="220" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="View Blockchain List" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="350" y="240" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="View Loan Marketplace" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="300" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Transfer Money" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="360" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="View Loan Contracts" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="420" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Receive Payments" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="480" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Update Profile" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="540" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="View Blockchain List" style="ellipse;html=1;whiteSpace=wrap;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="600" width="150" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>
