@@ -22,32 +22,32 @@ CREATE TABLE LenderPortfolio (
 );
 
 -- RewardsStore Table
-CREATE TABLE RewardsStore (
-    ItemID INT AUTO_INCREMENT PRIMARY KEY,
-    ItemName VARCHAR(255) NOT NULL,
-    ItemDescription TEXT,
-    PointsCost INT NOT NULL
-);
+-- CREATE TABLE RewardsStore (
+--     ItemID INT AUTO_INCREMENT PRIMARY KEY,
+--     ItemName VARCHAR(255) NOT NULL,
+--     ItemDescription TEXT,
+--     PointsCost INT NOT NULL
+-- );
 
 -- RewardsOrder Table
-CREATE TABLE RewardsOrder (
-    OrderID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT NOT NULL,
-    ItemID INT NOT NULL,
-    OrderDate DATE NOT NULL,
-    Status ENUM('Pending', 'Completed') NOT NULL,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ItemID) REFERENCES RewardsStore(ItemID)
-);
+-- CREATE TABLE RewardsOrder (
+--     OrderID INT AUTO_INCREMENT PRIMARY KEY,
+--     UserID INT NOT NULL,
+--     ItemID INT NOT NULL,
+--     OrderDate DATE NOT NULL,
+--     Status ENUM('Pending', 'Completed') NOT NULL,
+--     FOREIGN KEY (UserID) REFERENCES Users(UserID),
+--     FOREIGN KEY (ItemID) REFERENCES RewardsStore(ItemID)
+-- );
 
 -- RewardsPoints Table
-CREATE TABLE RewardsPoints (
-    RewardsID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT NOT NULL,
-    Points INT NOT NULL,
-    AcquiredDate DATE NOT NULL,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
+-- CREATE TABLE RewardsPoints (
+--     RewardsID INT AUTO_INCREMENT PRIMARY KEY,
+--     UserID INT NOT NULL,
+--     Points INT NOT NULL,
+--     AcquiredDate DATE NOT NULL,
+--     FOREIGN KEY (UserID) REFERENCES Users(UserID)
+-- );
 
 -- The below are Blockchain structure and attributes that are part of the Database + Blockchain hybrid system
 -- Borrower Contract Blocks:
