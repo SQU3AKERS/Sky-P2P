@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2024-01-06T08:45:48.655Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="kDemQaqzxPd-6ANJLa6_" version="22.1.17" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-06T08:54:10.757Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="l3ARB0tH6NvQ2bhH27LE" version="22.1.17" type="github">
   <diagram name="Page-1" id="5f0bae14-7c28-e335-631c-24af17079c00">
-    <mxGraphModel dx="508" dy="962" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1367" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-18" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="1110" y="5" width="520" height="400" as="geometry" />
+          <mxGeometry x="280" y="10" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-12" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;BorrowerContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-18">
-          <mxGeometry width="520" height="400" as="geometry" />
+          <mxGeometry width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-13" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-12">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
@@ -16,13 +16,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-14" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;i style=&quot;&quot;&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;Interface&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 20px;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ createContract(borrowerId: uint, loanAmount: uint, interestRate: uint, startDate: uint): void&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ listAllContractsForBorrowerId(borrowerId: uint256): Contract[]&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getAllContracts(): Contract[]&lt;/font&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-18">
-          <mxGeometry x="50" y="70" width="420" height="280" as="geometry" />
+          <mxGeometry x="90" y="70" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-19" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="1110" y="445" width="520" height="400" as="geometry" />
+          <mxGeometry x="280" y="420" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-15" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;PaymentContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-19">
-          <mxGeometry width="520" height="400" as="geometry" />
+          <mxGeometry width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-16" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-15">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
@@ -30,13 +30,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-17" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;i style=&quot;&quot;&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;Interface&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 20px;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ createPayment(contractBlockId: uint, borrowerId: uint, paymentAmount: uint, paymentDate: uint): void&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getAllPayments(): Payment[]&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getPaymentsForBorrowerId(borrowerId: uint): Payment[]&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-19">
-          <mxGeometry x="50" y="70" width="420" height="280" as="geometry" />
+          <mxGeometry x="90" y="70" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-20" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="1670" y="5" width="520" height="400" as="geometry" />
+          <mxGeometry x="280" y="830" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-21" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;TransactionContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-20">
-          <mxGeometry width="520" height="400" as="geometry" />
+          <mxGeometry width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-22" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-21">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
@@ -44,13 +44,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-23" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;i style=&quot;&quot;&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;Interface&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 20px;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ createTransaction(lenderId: uint, borrowerId: uint, amount: uint, transactionDate: uint): void&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getAllTransactions(): Transaction[]&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getTransactionsForUser(userId: uint): Transaction[]&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-20">
-          <mxGeometry x="50" y="70" width="420" height="280" as="geometry" />
+          <mxGeometry x="90" y="80" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-24" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="1670" y="445" width="520" height="400" as="geometry" />
+          <mxGeometry x="280" y="1240" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-25" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;CreditScoreContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-24">
-          <mxGeometry width="520" height="400" as="geometry" />
+          <mxGeometry width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-26" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-25">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
@@ -58,7 +58,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-27" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;i style=&quot;&quot;&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;Interface&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 20px;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ createCreditScore(borrowerId: uint, score: uint, scoreDate: uint): void&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getAllCreditScores(): CreditScore[]&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 20px;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;+ getCreditScoresForBorrowerId(borrowerId: uint): CreditScore[]&lt;/font&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-24">
-          <mxGeometry x="50" y="70" width="420" height="280" as="geometry" />
+          <mxGeometry x="90" y="70" width="420" height="280" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
