@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2024-01-06T08:54:10.757Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="l3ARB0tH6NvQ2bhH27LE" version="22.1.17" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-06T08:55:53.849Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="Kh82zYTGR0kq-V4Wri7g" version="22.1.17" type="github">
   <diagram name="Page-1" id="5f0bae14-7c28-e335-631c-24af17079c00">
-    <mxGraphModel dx="1367" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2278" dy="1363" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-18" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="280" y="10" width="600" height="400" as="geometry" />
+          <mxGeometry x="240" y="120" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-12" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;BorrowerContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-18">
           <mxGeometry width="600" height="400" as="geometry" />
@@ -19,7 +19,7 @@
           <mxGeometry x="90" y="70" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-19" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="280" y="420" width="600" height="400" as="geometry" />
+          <mxGeometry x="240" y="560" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-15" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;PaymentContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-19">
           <mxGeometry width="600" height="400" as="geometry" />
@@ -33,7 +33,7 @@
           <mxGeometry x="90" y="70" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-20" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="280" y="830" width="600" height="400" as="geometry" />
+          <mxGeometry x="920" y="120" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-21" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;TransactionContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-20">
           <mxGeometry width="600" height="400" as="geometry" />
@@ -47,7 +47,7 @@
           <mxGeometry x="90" y="80" width="420" height="280" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-24" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="280" y="1240" width="600" height="400" as="geometry" />
+          <mxGeometry x="920" y="560" width="600" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ArF2T9wXuvhQ2wrIt1zp-25" value="«Component»&lt;br style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt;CreditScoreContract&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;fontSize=20;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;spacingTop=0;spacingBottom=-60;" vertex="1" parent="ArF2T9wXuvhQ2wrIt1zp-24">
           <mxGeometry width="600" height="400" as="geometry" />
