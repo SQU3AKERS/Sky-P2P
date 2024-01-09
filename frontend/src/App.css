@@ -755,6 +755,39 @@
   margin-bottom: 20px; /* Space before the menu items */
 }
 
+/*Lender Portfolio*/
+.lender-portfolio table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.lender-portfolio th, .lender-portfolio td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.lender-portfolio th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.lender-portfolio tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.lender-portfolio tr:hover {
+  background-color: #ddd;
+}
+
+.no-investments {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 24px;
+  color: #333;
+}
+
 @media (max-width: 768px) {
   .navbar-menu {
     display: none; /* Hide the navbar menu on small screens */
