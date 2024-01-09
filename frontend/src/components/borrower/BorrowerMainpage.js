@@ -61,7 +61,6 @@ const BorrowerMainpage = () => {
           });
         } catch (error) {
           console.error('Error fetching main menu data:', error);
-          // Optionally set an error state here
         }
       }
     };
@@ -73,13 +72,13 @@ const BorrowerMainpage = () => {
     <div className="user-main-menu">
       <div className="welcome-message">Welcome, {userFirstName}!</div>
       <div className="menu-row top">
-        <div className="menu-item">Total Contracts Created: {menuData.totalContractsCreated}</div>
-        <div className="menu-item">Total Contracts Funded: {menuData.totalContractsFunded}</div>
-        <div className="menu-item">Credit Score: {menuData.creditScore}</div>
+        <div className="menu-item">Total Contracts Created: <br></br>{menuData.totalContractsCreated}</div>
+        <div className="menu-item">Total Contracts Funded: <br></br>RM {menuData.totalContractsFunded}.00</div>
+        <div className="menu-item">Credit Score: <br></br>{menuData.creditScore}/10</div>
       </div>
       <div className="menu-row bottom">
-        <div className="menu-item">Total Outstanding: {menuData.totalOutstanding}</div>
-        <div className="menu-item">Total Paid: {menuData.totalPaid}</div>
+        <div className="menu-item">Total Outstanding: <br></br>RM {menuData.totalOutstanding}.00</div>
+        <div className="menu-item">Total Paid: <br></br>RM {menuData.totalPaid}.00</div>
       </div>
     </div>
   );

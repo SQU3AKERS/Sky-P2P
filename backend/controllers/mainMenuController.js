@@ -54,56 +54,62 @@ mainMenuController.getTotalContractsCreated = async (userId) => {
     try {
       // Fetch transactions for the given user
       const transactions = await transactionContract.methods.getTransactionsForUser(userId).call();
-  
+    
       // Calculate the total funded amount
-      const totalFunded = transactions.reduce((total, transaction) => {
+      let totalFunded = 0;
+      transactions.forEach(transaction => {
         if (transaction.borrowerId === userId) {
-          total += transaction.amount;
+          totalFunded += Number(transaction.amount);
         }
-        return total;
-      }, 0);
-  
+      });
+    
+      // Return the total funded amount as a fixed decimal string
       return totalFunded;
     } catch (error) {
       console.error(`Error in getTotalContractsFunded: ${error}`);
       throw error;
     }
-  };
+  };  
 
   mainMenuController.getCreditScore = async (userId) => {
-    try {  
+    try {
       // Fetch credit scores for the given user
       const creditScores = await creditScoreContract.methods.getCreditScoresForBorrowerId(userId).call();
   
       // Calculate the average score
-      const averageScore = creditScores.reduce((total, scoreRecord) => total + scoreRecord.score, 0) / creditScores.length;
+      const averageScore = creditScores.reduce((total, scoreRecord) => total + parseInt(scoreRecord.score), 0) / creditScores.length;
   
       return averageScore || 0; // Return 0 if no scores found
     } catch (error) {
       console.error(`Error in getCreditScore: ${error}`);
       throw error;
     }
-  };
+  };  
 
   mainMenuController.getTotalOutstanding = async (userId) => {
-    try {  
+    try {
       // Fetch contracts for the given user
       const borrowerContracts = await borrowerContract.methods.listAllContractsForBorrowerId(userId).call();
+      let totalOutstanding = 0;  // Use a regular number since we're not converting units
   
-      // Extract contract IDs from the borrower contracts
-      const contractIds = borrowerContracts.map(contract => contract.id);
-  
-      // Fetch and sum the investment amounts from LenderPortfolio for these contract IDs
-      let totalOutstanding = 0;
-      for (let contractId of contractIds) {
-        const contract = await LenderPortfolio.findOne({
+      for (let contract of borrowerContracts) {
+        // Find the related 'Earning' status contract in the LenderPortfolio
+        const portfolioEntry = await LenderPortfolio.findOne({
           where: {
-            BlockID: contractId,
+            BlockID: contract.id.toString(),
             Status: 'Earning'
           }
         });
-        if (contract) {
-          totalOutstanding += contract.InvestmentAmount;
+  
+        if (portfolioEntry) {
+          // Use the loanAmount and interestRate directly to calculate the total amount due for the contract
+          const loanAmount = Number(contract.loanAmount);  // Convert to number if necessary
+          const interestRate = Number(contract.interestRate) / 100;  // Convert interest rate to decimal
+          const interestAmount = loanAmount * interestRate;
+          const totalAmount = loanAmount + interestAmount;
+  
+          // Accumulate the total outstanding amount
+          totalOutstanding += totalAmount;
         }
       }
   
@@ -112,21 +118,25 @@ mainMenuController.getTotalContractsCreated = async (userId) => {
       console.error(`Error in getTotalOutstanding: ${error}`);
       throw error;
     }
-  };
-
+  };  
+  
   mainMenuController.getTotalPaid = async (userId) => {
     try {
       // Fetch payment records for the given user
       const payments = await paymentContract.methods.getPaymentsForBorrowerId(userId).call();
-  
+    
       // Calculate the total paid amount
-      const totalPaid = payments.reduce((total, payment) => total + payment.paymentAmount, 0);
-  
+      let totalPaid = 0;
+      payments.forEach(payment => {
+        totalPaid += Number(payment.paymentAmount);
+      });
+    
+      // Return the total paid amount as a fixed decimal string
       return totalPaid;
     } catch (error) {
       console.error(`Error in getTotalPaid: ${error}`);
       throw error;
     }
-  };
+  };  
 
 module.exports = mainMenuController;
