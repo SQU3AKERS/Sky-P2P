@@ -139,4 +139,104 @@ mainMenuController.getTotalContractsCreated = async (userId) => {
     }
   };  
 
+  mainMenuController.getTotalInvestment = async (lenderId) => {
+    try {
+      const investments = await LenderPortfolio.findAll({
+        where: { LenderID: lenderId }
+      });
+      const totalInvestment = investments.reduce((total, investment) => {
+        return total + Number(investment.InvestmentAmount);
+      }, 0);
+      return totalInvestment;
+    } catch (error) {
+      console.error(`Error in getTotalInvestment: ${error}`);
+      throw error;
+    }
+  };
+
+  mainMenuController.getTotalUnrealizedReturns = async (lenderId) => {
+    try {
+      // Fetch all active investments for the lender
+      const investments = await LenderPortfolio.findAll({
+        where: { LenderID: lenderId, Status: 'Earning' }
+      });
+  
+      // Fetch all contracts
+      const allContracts = await borrowerContract.methods.getAllContracts().call();
+  
+      let totalUnrealizedReturns = 0;
+  
+      for (let investment of investments) {
+        // Find the corresponding contract based on BlockID
+        const contract = allContracts.find(c => c.id.toString() === investment.BlockID.toString());
+  
+        if (contract) {
+          // Calculate the expected return (loan amount + interest)
+          const loanAmount = Number(contract.loanAmount);
+          const interestRate = Number(contract.interestRate) / 100; // Convert to decimal
+          const interestAmount = loanAmount * interestRate;
+          const expectedReturn = loanAmount + interestAmount;
+  
+          // Fetch all payments and filter by contractBlockId
+          const allPayments = await paymentContract.methods.getAllPayments().call();
+          const contractPayments = allPayments.filter(p => p.contractBlockId.toString() === contract.id.toString());
+          const totalPayments = contractPayments.reduce((total, payment) => {
+            return total + Number(payment.paymentAmount);
+          }, 0);
+  
+          // Calculate unrealized return for this contract and add to total
+          totalUnrealizedReturns += expectedReturn - totalPayments;
+        }
+      }
+  
+      return totalUnrealizedReturns;
+    } catch (error) {
+      console.error(`Error in getTotalUnrealizedReturns: ${error}`);
+      throw error;
+    }
+  };  
+
+  mainMenuController.getTotalRealizedReturns = async (lenderId) => {
+    try {
+      // Fetch all investments made by the lender
+      const investments = await LenderPortfolio.findAll({
+        where: { LenderID: lenderId }
+      });
+  
+      // Fetch all payments from the PaymentContract
+      const allPayments = await paymentContract.methods.getAllPayments().call();
+  
+      let totalRealizedReturns = 0;
+  
+      // Loop through each investment to calculate realized returns
+      for (let investment of investments) {
+        // Filter payments related to each investment's BlockID
+        const investmentPayments = allPayments.filter(p => p.contractBlockId.toString() === investment.BlockID.toString());
+        const investmentRealizedReturns = investmentPayments.reduce((total, payment) => {
+          return total + Number(payment.paymentAmount);
+        }, 0);
+  
+        // Add the realized returns from this investment to the total
+        totalRealizedReturns += investmentRealizedReturns;
+      }
+  
+      return totalRealizedReturns;
+    } catch (error) {
+      console.error(`Error in getTotalRealizedReturns: ${error}`);
+      throw error;
+    }
+  };  
+
+  mainMenuController.getTotalAcceptedContracts = async (lenderId) => {
+    try {
+      const count = await LenderPortfolio.count({
+        where: { LenderID: lenderId }
+      });
+      return count;
+    } catch (error) {
+      console.error(`Error in getTotalAcceptedContracts: ${error}`);
+      throw error;
+    }
+  };  
+
 module.exports = mainMenuController;

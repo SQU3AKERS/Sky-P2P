@@ -77,4 +77,44 @@ router.get('/:userId/firstname', async (req, res) => {
     }
   });
 
+  router.get('/:userId/totalInvestment', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const totalInvestment = await mainMenuController.getTotalInvestment(userId);
+      res.json({ totalInvestment });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error', error });
+    }
+  });
+
+  router.get('/:userId/totalUnrealizedReturns', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const totalUnrealizedReturns = await mainMenuController.getTotalUnrealizedReturns(userId);
+      res.json({ totalUnrealizedReturns });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error', error });
+    }
+  });
+
+  router.get('/:userId/totalRealizedReturns', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const totalRealizedReturns = await mainMenuController.getTotalRealizedReturns(userId);
+      res.json({ totalRealizedReturns });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error', error });
+    }
+  });
+
+  router.get('/:userId/totalAcceptedContracts', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const totalAcceptedContracts = await mainMenuController.getTotalAcceptedContracts(userId);
+      res.json({ totalAcceptedContracts });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error', error });
+    }
+  });
+
 module.exports = router;
