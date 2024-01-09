@@ -3,8 +3,9 @@ const Users = require('../models/userModel'); // Adjust the path as needed
 const { createSession } = require('../utils/sessionManager'); // Adjust the path as needed
 const { validateEmail } = require('../utils/validation'); // Adjust the path as needed
 
-const loginController = {
-  login: async (req, res) => {
+const loginController = {};
+
+  loginController.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -36,7 +37,8 @@ const loginController = {
       console.error('Login error for user:', email, 'Error:', err);
       res.status(500).json({ message: "Server error", error: err.message || err });
     }
-  }
-};
+  };
 
 module.exports = loginController;
+
+
